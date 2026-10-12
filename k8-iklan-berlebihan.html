@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menjaga Kejujuran dalam Iklan</title>
+<style>
+:root{--navy:#12304a;--blue:#1769aa;--sky:#eaf5ff;--teal:#087e72;--gold:#ffcf56;--red:#a52a35;--ink:#182a3a;--muted:#536779;--paper:#fff;--line:#cbd9e5;--green:#e4f7ee}
+*{box-sizing:border-box}body{margin:0;background:#f1f6fa;color:var(--ink);font-family:Arial,Helvetica,sans-serif;font-size:18px;line-height:1.5}
+button,input,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:14px;padding:13px 18px;font-weight:700;min-height:48px}button:focus-visible,input:focus-visible,textarea:focus-visible,.word:focus-visible{outline:4px solid var(--gold);outline-offset:3px}
+header{background:var(--navy);color:white;padding:22px clamp(16px,4vw,42px)}header .eyebrow{font-size:.88rem;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;color:#bde4ff}h1{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.15;margin:7px 0}header p{max-width:900px;margin:8px 0 0;color:#e8f4ff}
+main{max-width:1100px;margin:0 auto;padding:20px clamp(12px,3vw,28px) 36px}.progress-wrap{display:flex;gap:12px;align-items:center;margin:0 0 16px}.progress{height:12px;flex:1;background:#d6e2ec;border-radius:99px;overflow:hidden}.progress span{display:block;height:100%;width:25%;background:var(--teal);transition:width .2s}.pill{background:#dceefa;color:var(--navy);padding:7px 12px;border-radius:99px;font-weight:700;font-size:.9rem}
+.card{background:var(--paper);border:2px solid var(--line);border-radius:22px;padding:clamp(16px,3vw,28px);box-shadow:0 8px 22px #15324a0d}.card h2{margin:0 0 8px;font-size:clamp(1.35rem,3vw,1.8rem);color:var(--navy)}.instruction{color:var(--muted);margin:4px 0 18px}
+.ad-box{background:var(--sky);border:2px dashed #85b5d8;border-radius:18px;padding:20px;margin:16px 0}.slogan{font-size:clamp(1.4rem,3.5vw,2rem);font-weight:800;line-height:1.5}.word{display:inline;border:0;border-radius:7px;padding:2px 5px;min-height:0;background:#fff;color:var(--navy);box-shadow:inset 0 -3px 0 #8bb8d6;margin:2px 1px;font-weight:800}.word.selected{background:var(--gold);box-shadow:inset 0 -3px 0 #b77b00}.word.good{background:#d8f4e7;box-shadow:inset 0 -3px 0 var(--teal)}
+.field-label{display:block;font-weight:800;margin:17px 0 8px;color:var(--navy)}.choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.choice{background:#f7fafc;border:2px solid var(--line);color:var(--ink);text-align:left}.choice.active{background:#d9efff;border-color:var(--blue);box-shadow:0 0 0 2px #1769aa22}.choice small{display:block;color:var(--muted);font-weight:400;margin-top:4px}
+textarea{width:100%;min-height:100px;resize:vertical;border:2px solid #a9bdcc;border-radius:13px;padding:13px;background:white;color:var(--ink)}.hint{font-size:.93rem;color:var(--muted);margin:7px 0}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.primary{background:var(--blue);color:white}.secondary{background:#e2edf5;color:var(--navy)}.success{background:var(--teal);color:white}.danger{background:#f9e5e6;color:var(--red)}
+.feedback{margin-top:16px;border-radius:15px;padding:16px;background:#f0f5f8;border-left:6px solid var(--blue)}.feedback h3{margin:0 0 7px}.feedback p{margin:7px 0}.model{background:var(--green);border-left-color:var(--teal)}.honesty{margin-top:20px;background:#fff6d9;border:2px solid #edcf70;border-radius:18px;padding:18px}.honesty h3{margin:0 0 6px;color:#654700}.footer{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:18px;flex-wrap:wrap;color:var(--muted)}.hidden{display:none!important}.final-score{font-size:2rem;font-weight:900;color:var(--teal)}.summary-list{padding-left:24px}.summary-list li{margin:10px 0}
+@media(max-width:680px){.choices{grid-template-columns:1fr}.choice{text-align:left}.progress-wrap{align-items:flex-start}.footer button{flex:1}.actions button{flex:1 1 140px}.slogan{line-height:1.7}}
+@media print{header{background:white;color:black;padding:10px}header p,.actions,.progress-wrap,.footer button{display:none!important}body{background:white}.card{box-shadow:none;border:1px solid #aaa}.hidden{display:block!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">Bahasa Indonesia • Kelas VIII • Fase D</div>
+  <h1>Jangan Terjebak Iklan Berlebihan!</h1>
+  <p>Temukan kata yang bermasalah, jelaskan alasannya, lalu perbaiki slogan agar lebih jujur dan dapat dipercaya.</p>
+</header>
+<main>
+  <div class="progress-wrap"><span class="pill" id="counter">Slogan 1 dari 4</span><div class="progress" aria-label="Kemajuan"><span id="bar"></span></div></div>
+  <section class="card" id="work">
+    <h2 id="taskTitle">Misi 1: Periksa klaim iklan</h2>
+    <p class="instruction">1) Sentuh kata atau frasa yang bermasalah pada slogan. 2) Pilih alasan yang paling sesuai. 3) Ketik versi yang lebih jujur.</p>
+    <div class="ad-box">
+      <div class="pill" id="product">Produk fiktif: Minuman Jahe Hangat</div>
+      <div class="slogan" id="slogan" aria-label="Slogan iklan"></div>
+    </div>
+    <div id="selectionStatus" class="hint" aria-live="polite">Belum ada kata yang dipilih. Kamu dapat menyentuh lebih dari satu kata.</div>
+    <span class="field-label">Pilih alasan yang paling sesuai</span>
+    <div class="choices" id="choices">
+      <button class="choice" data-reason="bukti">Tidak bisa dibuktikan<small>Klaim tidak disertai bukti yang jelas.</small></button>
+      <button class="choice" data-reason="janji">Menjanjikan berlebihan<small>Hasil dijanjikan secara mutlak atau terlalu hebat.</small></button>
+      <button class="choice" data-reason="sesat">Menyesatkan<small>Kalimat dapat membuat pembaca salah paham.</small></button>
+    </div>
+    <label class="field-label" for="rewrite">Perbaiki slogan agar lebih jujur</label>
+    <textarea id="rewrite" placeholder="Tulis versi iklan yang wajar, jelas, dan tidak menjanjikan hal yang belum pasti."></textarea>
+    <p class="hint" id="promptHint">Petunjuk: hindari kata mutlak seperti “pasti” jika hasilnya tidak dapat dijamin.</p>
+    <div class="actions">
+      <button class="primary" id="checkBtn">Periksa jawaban</button>
+      <button class="secondary" id="modelBtn">Lihat contoh jawaban model</button>
+    </div>
+    <div id="feedback" class="feedback hidden" aria-live="polite"></div>
+    <div id="model" class="feedback model hidden">
+      <h3>Contoh jawaban model</h3>
+      <p id="modelText"></p>
+      <p><strong>Mengapa lebih jujur?</strong> <span id="modelWhy"></span></p>
+    </div>
+    <div class="footer">
+      <span id="savedStatus">Jawabanmu tersimpan selama halaman ini dibuka.</span>
+      <div class="actions" style="margin-top:0">
+        <button class="secondary" id="prevBtn">Sebelumnya</button>
+        <button class="primary" id="nextBtn">Slogan berikutnya</button>
+      </div>
+    </div>
+  </section>
+  <section class="card hidden" id="results">
+    <h2>Misi selesai!</h2>
+    <p class="final-score" id="score"></p>
+    <p id="resultMessage"></p>
+    <h3>Ingat prinsip iklan yang jujur</h3>
+    <ul class="summary-list">
+      <li>Sampaikan manfaat yang masuk akal dan dapat dijelaskan.</li>
+      <li>Jangan menjamin hasil yang tidak bisa dipastikan.</li>
+      <li>Jangan membuat pembaca percaya pada klaim yang menyesatkan.</li>
+      <li>Kejujuran membangun kepercayaan antara penjual dan pembeli.</li>
+    </ul>
+    <div class="honesty"><h3>Nilai karakter: JUJUR</h3><p>Penulis iklan yang jujur tidak sekadar ingin produknya dibeli. Ia juga menghormati pembaca dengan menyampaikan informasi secara benar, wajar, dan bertanggung jawab.</p></div>
+    <div class="actions"><button class="primary" id="restartBtn">Ulangi dari awal</button><button class="secondary" id="printBtn">Cetak ringkasan</button></div>
+  </section>
+  <div class="honesty" id="valueNote"><h3>🧭 Tantangan kejujuran</h3><p>Tanyakan pada diri sendiri: “Apakah aku bisa menjelaskan bukti dari klaim ini?” Jika tidak, ubah kalimatnya menjadi manfaat yang masuk akal atau informasi yang dapat diperiksa.</p></div>
+</main>
+<script>
+const tasks = [
+ {product:"Produk fiktif: Minuman Jahe Hangat", text:"Pasti sembuh dalam sehari, beli sekarang!", bad:[0,1,2,3], reason:"janji", model:"Nikmati minuman jahe hangat sebagai teman bersantai.", why:"Kalimat ini tidak menjanjikan kesembuhan. Minuman tidak boleh diklaim menyembuhkan penyakit tanpa dasar yang sah.", hint:"Perhatikan klaim “pasti sembuh dalam sehari”. Hasil kesehatan tidak boleh dijamin sembarangan."},
+ {product:"Produk fiktif: Sabun Daun Segar", text:"Produk terbaik sedunia, 100% sempurna!", bad:[0,1,2,3], reason:"bukti", model:"Sabun Daun Segar memiliki aroma daun yang lembut untuk menemani rutinitas mandi.", why:"Versi ini menjelaskan ciri produk secara wajar, bukan mengaku paling baik sedunia atau sempurna tanpa bukti.", hint:"Klaim “terbaik sedunia” dan “100% sempurna” sulit dibuktikan."},
+ {product:"Produk lokal fiktif: Madu Hutan Kolaka Utara", text:"Minum madu ini, semua penyakit langsung hilang!", bad:[2,3,4,5], reason:"sesat", model:"Madu dapat dinikmati sebagai pemanis alami. Gunakan sesuai kebutuhan dan perhatikan informasi pada kemasan.", why:"Kalimat ini tidak menyatakan madu menyembuhkan semua penyakit. Informasi manfaat disampaikan dengan hati-hati.", hint:"Pikirkan apakah klaim “semua penyakit langsung hilang” dapat membuat orang salah paham."},
+ {product:"Produk lokal fiktif: Keripik Pisang Pesisir", text:"Sekali coba, dijamin semua orang pasti ketagihan!", bad:[3,4,5,6], reason:"janji", model:"Coba Keripik Pisang Pesisir dengan rasa renyah untuk teman bersantai.", why:"Versi ini mengajak mencoba tanpa menjamin reaksi setiap orang. Selera tiap orang berbeda.", hint:"Kata “dijamin” dan “semua orang” membuat janji yang tidak dapat dipastikan."}
+];
+let idx=0, selected=new Set(), answers=tasks.map(()=>({words:[],reason:"",rewrite:"",checked:false,good:false}));
+const $=id=>document.getElementById(id);
+function renderSlogan(){
+ const t=tasks[idx], a=answers[idx]; selected=new Set(a.words);
+ $("counter").textContent=`Slogan ${idx+1} dari ${tasks.length}`;$("bar").style.width=((idx+1)/tasks.length*100)+"%";
+ $("taskTitle").textContent=`Misi ${idx+1}: Periksa klaim iklan`;$("product").textContent=t.product;
+ const words=t.text.split(/(\s+)/); let wi=0; $("slogan").innerHTML="";
+ words.forEach(w=>{if(!w.trim()){ $("slogan").appendChild(document.createTextNode(w));return;}
+ const b=document.createElement("button");b.className="word"+(selected.has(wi)?" selected":"");b.textContent=w;b.type="button";b.setAttribute("aria-pressed",selected.has(wi)?"true":"false");b.setAttribute("aria-label","Pilih kata "+w.replace(/[,.!?]/g,""));
+ b.addEventListener("click",()=>{if(selected.has(wi)){selected.delete(wi)}else{selected.add(wi)}answers[idx].words=[...selected];renderWordSelection();});b.dataset.word=wi++;$("slogan").appendChild(b);});
+ $("rewrite").value=a.rewrite;$("selectionStatus").textContent=selected.size?`Kata/frasa dipilih: ${[...selected].sort((a,b)=>a-b).map(n=>t.text.split(/\s+/)[n]).join(" ")}`:"Belum ada kata yang dipilih. Kamu dapat menyentuh lebih dari satu kata.";
+ document.querySelectorAll(".choice").forEach(b=>b.classList.toggle("active",b.dataset.reason===a.reason));
+ $("feedback").classList.toggle("hidden",!a.checked);if(a.checked)showFeedback();
+ $("model").classList.add("hidden");$("prevBtn").disabled=idx===0;$("prevBtn").style.opacity=idx===0?".45":"1";
+ $("nextBtn").textContent=idx===tasks.length-1?"Lihat hasil":"Slogan berikutnya";
+}
+function renderWordSelection(){
+ document.querySelectorAll(".word").forEach(b=>{const n=Number(b.dataset.word);b.classList.toggle("selected",selected.has(n));b.setAttribute("aria-pressed",selected.has(n)?"true":"false")});
+ const t=tasks[idx];$("selectionStatus").textContent=selected.size?`Kata/frasa dipilih: ${[...selected].sort((a,b)=>a-b).map(n=>t.text.split(/\s+/)[n]).join(" ")}`:"Belum ada kata yang dipilih. Kamu dapat menyentuh lebih dari satu kata.";
+}
+document.querySelectorAll(".choice").forEach(b=>b.addEventListener("click",()=>{answers[idx].reason=b.dataset.reason;document.querySelectorAll(".choice").forEach(x=>x.classList.toggle("active",x===b));}));
+$("rewrite").addEventListener("input",e=>answers[idx].rewrite=e.target.value);
+function showFeedback(){
+ const t=tasks[idx],a=answers[idx];$("feedback").classList.remove("hidden");
+ const hasWords=a.words.length>0, hasReason=!!a.reason, hasRewrite=a.rewrite.trim().length>=8;
+ const reasonText={bukti:"tidak bisa dibuktikan",janji:"menjanjikan berlebihan",sesat:"menyesatkan"};
+ $("feedback").innerHTML=`<h3>${hasWords&&hasReason&&hasRewrite?"Terima kasih sudah mencoba!":"Ayo lengkapi jawabanmu"}</h3><p>${hasWords?"✓ Kamu menandai kata/frasa yang perlu diperiksa.":"• Sentuh setidaknya satu kata atau frasa yang bermasalah."}</p><p>${hasReason?"✓ Alasan pilihanmu: <strong>"+reasonText[a.reason]+"</strong>. Bandingkan dengan contoh model.":"• Pilih alasan yang paling sesuai."}</p><p>${hasRewrite?"✓ Kamu sudah menulis perbaikan. Periksa lagi apakah klaimnya masuk akal dan tidak menjanjikan hasil pasti.":"• Tulis perbaikan dengan kalimat yang lebih jujur."}</p>`;
+ a.checked=true;a.good=hasWords&&hasReason&&hasRewrite;
+}
+$("checkBtn").addEventListener("click",()=>{showFeedback();});
+$("modelBtn").addEventListener("click",()=>{$("modelText").textContent=tasks[idx].model;$("modelWhy").textContent=tasks[idx].why;$("model").classList.remove("hidden");});
+$("prevBtn").addEventListener("click",()=>{if(idx>0){idx--;renderSlogan();}});
+$("nextBtn").addEventListener("click",()=>{if(idx<tasks.length-1){idx++;renderSlogan()}else showResults()});
+function showResults(){ $("work").classList.add("hidden");$("valueNote").classList.add("hidden");$("results").classList.remove("hidden");
+ const done=answers.filter(a=>a.good).length;$("score").textContent=`${done} dari ${tasks.length} misi lengkap`;
+ $("resultMessage").textContent=done===4?"Hebat! Semua misi sudah kamu lengkapi. Pastikan setiap klaim tetap jujur dan masuk akal.":done>=2?"Bagus, kamu sudah berlatih memeriksa iklan. Ulangi misi yang belum lengkap dan bandingkan dengan contoh model.":"Terus berlatih. Pilih kata yang bermasalah, tentukan alasan, dan tulis versi yang lebih jujur. Tidak apa-apa belajar dari contoh model.";
+}
+$("restartBtn").addEventListener("click",()=>{idx=0;answers=tasks.map(()=>({words:[],reason:"",rewrite:"",checked:false,good:false}));$("results").classList.add("hidden");$("work").classList.remove("hidden");$("valueNote").classList.remove("hidden");renderSlogan();});
+$("printBtn").addEventListener("click",()=>window.print());
+renderSlogan();
+</script>
+</body>
+</html>

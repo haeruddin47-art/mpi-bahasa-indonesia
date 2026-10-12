@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tebak Slogan — Bahasa Indonesia Kelas VIII</title>
+<style>
+:root{--navy:#13294b;--blue:#2155a3;--cyan:#b9f0f2;--yellow:#ffd166;--cream:#fffaf0;--green:#18794e;--red:#b42318}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:var(--navy);color:#17233b}
+body{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:clamp(8px,2vw,24px)}
+button{font:inherit;cursor:pointer;touch-action:manipulation}
+button:focus-visible{outline:4px solid #ffb703;outline-offset:3px}
+.app{width:min(1400px,100%);min-height:min(900px,94vh);background:var(--cream);border-radius:24px;overflow:hidden;box-shadow:0 20px 60px #0005;display:flex;flex-direction:column}
+.topbar{background:var(--blue);color:white;padding:14px clamp(16px,3vw,36px);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:clamp(1rem,2vw,1.3rem);font-weight:800;letter-spacing:.02em}
+.pill{border:2px solid #ffffff70;border-radius:999px;padding:8px 14px;font-size:clamp(.95rem,1.5vw,1.15rem);font-weight:700}
+main{flex:1;padding:clamp(18px,4vw,52px);display:flex;flex-direction:column;justify-content:center}
+.screen{display:none}.screen.active{display:flex;flex-direction:column;gap:20px}
+.eyebrow{color:var(--blue);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:clamp(.85rem,1.5vw,1rem)}
+h1{font-size:clamp(2rem,5.5vw,4.6rem);line-height:1.04;color:var(--navy);margin:0}
+h2{font-size:clamp(1.5rem,3vw,2.5rem);margin:0;color:var(--navy)}
+.lead{font-size:clamp(1.1rem,2.1vw,1.5rem);line-height:1.5;max-width:850px;margin:0}
+.hero{background:linear-gradient(135deg,#dff9f7,#fff0c2);border-radius:22px;padding:clamp(22px,5vw,54px);border:2px solid #d2e6e8}
+.hero-icon{font-size:clamp(3rem,7vw,6rem);line-height:1}
+.primary,.secondary,.choice{border:0;border-radius:14px;font-weight:800;min-height:58px;padding:15px 22px;font-size:clamp(1.05rem,2vw,1.35rem)}
+.primary{background:var(--blue);color:#fff;box-shadow:0 5px 0 #153b77}
+.primary:hover{background:#173f80}.secondary{background:#e4ebf5;color:var(--navy);border:2px solid #c5d3e7}
+.button-row{display:flex;gap:12px;flex-wrap:wrap}
+.stats{display:flex;gap:12px;flex-wrap:wrap}.stat{background:#edf3fb;border-radius:14px;padding:12px 18px;font-weight:700;font-size:clamp(.95rem,1.7vw,1.15rem)}
+.progress-wrap{height:12px;background:#dbe4ef;border-radius:99px;overflow:hidden}.progress{height:100%;width:0;background:#17a673;transition:width .25s}
+.question-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.counter{font-weight:800;color:var(--blue);font-size:clamp(1rem,1.7vw,1.2rem)}
+.slogan-card{background:#fff;border:3px solid #dce6f1;border-radius:22px;padding:clamp(22px,4vw,42px);text-align:center;box-shadow:0 8px 0 #e5eaf0}
+.slogan-label{font-size:clamp(.9rem,1.5vw,1.1rem);color:#53657f;font-weight:800;text-transform:uppercase;letter-spacing:.1em}
+.slogan{font-size:clamp(1.65rem,4.3vw,3.6rem);line-height:1.2;font-weight:900;color:var(--navy);margin:15px 0 0}
+.prompt{font-size:clamp(1.1rem,2vw,1.45rem);font-weight:800;margin:0}
+.choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.choice{background:#fff;color:var(--navy);border:3px solid #cad7e8;text-align:left;display:flex;align-items:center;gap:12px;min-height:82px}
+.choice .letter{flex:0 0 38px;height:38px;border-radius:10px;background:#e8eff9;display:grid;place-items:center;font-weight:900;color:var(--blue)}
+.choice:hover:not(:disabled){border-color:var(--blue);background:#f1f7ff}
+.choice:disabled{cursor:default;opacity:1}
+.choice.correct{border-color:var(--green);background:#e5f7ed}.choice.correct .letter{background:var(--green);color:#fff}
+.choice.wrong{border-color:var(--red);background:#fff0ef}.choice.wrong .letter{background:var(--red);color:#fff}
+.feedback{display:none;border-radius:18px;padding:20px 24px;font-size:clamp(1rem,1.8vw,1.25rem);line-height:1.5}
+.feedback.show{display:block}.feedback.good{background:#e5f7ed;border:2px solid #9bd7b6}.feedback.bad{background:#fff0ef;border:2px solid #f0b2ad}
+.feedback strong{color:var(--navy)}.tag{display:inline-block;border-radius:8px;background:#fff;padding:4px 10px;font-weight:800;margin:5px 5px 0 0;border:1px solid #c9d8e8}
+.result-score{font-size:clamp(3.5rem,10vw,7rem);font-weight:900;color:var(--blue);line-height:1}
+.result-card{background:#edf7f6;border-radius:20px;padding:clamp(22px,4vw,40px);display:grid;gap:18px}
+.result-message{font-size:clamp(1.15rem,2.2vw,1.55rem);line-height:1.5}
+.small{font-size:.95rem;color:#53657f}
+footer{background:#edf2f8;padding:12px 20px;text-align:center;color:#52617a;font-size:.9rem}
+@media(max-width:760px){.app{min-height:94vh;border-radius:16px}.choices{grid-template-columns:1fr}.choice{min-height:64px}.topbar{align-items:flex-start}.button-row>*{flex:1 1 100%}main{padding:18px}.slogan-card{padding:22px 14px}}
+@media(min-width:761px) and (max-width:1050px){.choices{grid-template-columns:1fr 1fr}.choice:last-child{grid-column:span 2}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <header class="topbar">
+    <div class="brand">BAHASA INDONESIA • KELAS VIII</div>
+    <div class="pill">🎯 TEBAK SLOGAN</div>
+    <button class="pill" id="fullBtn" type="button" aria-label="Aktifkan layar penuh">⛶ Layar Penuh</button>
+  </header>
+  <main>
+    <section class="screen active" id="startScreen">
+      <div class="hero">
+        <div class="hero-icon" aria-hidden="true">💡📣</div>
+        <p class="eyebrow">Kuis pembuka • 3 menit</p>
+        <h1>Tebak Slogan!</h1>
+        <p class="lead">Enam slogan, enam tebakan. Baca slogan, pilih jenis produknya, lalu kenali apakah kalimat iklan itu bersifat imperatif, persuasif, atau keduanya.</p>
+      </div>
+      <div class="stats">
+        <div class="stat">🧩 6 pertanyaan</div><div class="stat">⏱️ 03:00 menit</div><div class="stat">⭐ Skor maksimal 6</div>
+      </div>
+      <p class="lead">Siapkan diri dan diskusikan alasan pilihanmu dengan santun. Waktu mulai dihitung saat tombol ditekan.</p>
+      <div class="button-row"><button class="primary" id="startBtn">Mulai Kuis ▶</button></div>
+    </section>
+
+    <section class="screen" id="quizScreen">
+      <div class="question-head">
+        <span class="counter" id="counter">Pertanyaan 1 dari 6</span>
+        <div class="stats"><span class="stat">⭐ Skor: <span id="score">0</span></span><span class="stat">⏳ Waktu: <span id="timer">03:00</span></span></div>
+      </div>
+      <div class="progress-wrap" aria-label="Kemajuan kuis"><div class="progress" id="progress"></div></div>
+      <div class="slogan-card">
+        <div class="slogan-label">Slogan iklan — nama produk dirahasiakan</div>
+        <p class="slogan" id="slogan">“Segarnya alami, semangat sepanjang hari!”</p>
+      </div>
+      <p class="prompt">Menurutmu, slogan ini mengiklankan produk apa?</p>
+      <div class="choices" id="choices"></div>
+      <div class="feedback" id="feedback" aria-live="polite"></div>
+      <div class="button-row"><button class="primary" id="nextBtn" hidden>Pertanyaan Berikutnya →</button><button class="secondary" id="quitBtn">Akhiri Kuis</button></div>
+    </section>
+
+    <section class="screen" id="resultScreen">
+      <div class="hero">
+        <p class="eyebrow">Kuis selesai</p>
+        <h1>Hebat, kamu sudah mencoba!</h1>
+        <p class="lead">Mari lihat hasil dan ingat kembali ciri kalimat iklan yang kamu temukan.</p>
+      </div>
+      <div class="result-card">
+        <div class="result-score"><span id="finalScore">0</span><span style="font-size:.35em;color:#53657f"> / 6</span></div>
+        <div class="result-message" id="resultMessage">Terus berlatih membaca slogan dengan cermat.</div>
+        <div class="stats"><div class="stat">✅ Benar: <span id="correctCount">0</span></div><div class="stat">❌ Belum tepat: <span id="wrongCount">0</span></div></div>
+        <p class="lead"><strong>Ingat:</strong> kalimat imperatif mengajak atau memerintah pembaca melakukan sesuatu, sedangkan kalimat persuasif membujuk atau meyakinkan. Satu slogan dapat memuat keduanya.</p>
+      </div>
+      <div class="button-row"><button class="primary" id="restartBtn">↻ Ulangi Kuis</button><button class="secondary" id="resultFullBtn">⛶ Layar Penuh</button></div>
+    </section>
+  </main>
+  <footer>Belajar iklan dengan cermat, kreatif, dan santun • SMP Negeri 8 Kolaka Utara</footer>
+</div>
+<script>
+(() => {
+  const questions = [
+    {slogan:"“Segarnya alami, semangat sepanjang hari!”",product:"Minuman sari buah",options:["Minuman sari buah","Sabun mandi","Buku tulis"],type:"Persuasif",keywords:["segarnya","semangat"],why:"Slogan membujuk pembaca dengan menonjolkan kesegaran dan semangat, tanpa memerintah secara langsung."},
+    {slogan:"“Pilih tas anyaman lokal, tampil unik dan bangga berkarya!”",product:"Tas anyaman lokal",options:["Sepatu olahraga","Tas anyaman lokal","Lampu belajar"],type:"Persuasif",keywords:["pilih","unik","bangga"],why:"Kata “pilih” mendorong pembaca menentukan pilihan, sedangkan “unik dan bangga” membujuk dengan manfaat emosional. Slogan ini mengandung ajakan sekaligus bujukan."},
+    {slogan:"“Gunakan sabun daun kelor, bersih terasa setiap hari!”",product:"Sabun daun kelor",options:["Sabun daun kelor","Keripik pisang","Pensil warna"],type:"Keduanya",keywords:["gunakan","bersih terasa"],why:"Kata “gunakan” merupakan perintah atau ajakan langsung (imperatif), sedangkan “bersih terasa” membujuk melalui manfaat produk (persuasif)."},
+    {slogan:"“Ayo, nikmati keripik pisang renyah dari kebun kita!”",product:"Keripik pisang",options:["Pupuk tanaman","Keripik pisang","Air minum isi ulang"],type:"Keduanya",keywords:["ayo","nikmati","renyah"],why:"Kata “ayo” dan “nikmati” mengajak pembaca bertindak, sementara kata “renyah” membujuk dengan menggambarkan keunggulan produk."},
+    {slogan:"“Catat ide hebatmu, mulai dengan buku tulis Pelangi!”",product:"Buku tulis Pelangi",options:["Buku tulis","Sampo rambut","Jus mangga"],type:"Imperatif",keywords:["catat","mulai"],why:"Kata kerja “catat” dan “mulai” mengarahkan pembaca melakukan tindakan. Fokus utama slogan adalah ajakan langsung."},
+    {slogan:"“Bawa botol minum isi ulang, hemat sampah dan jaga bumi!”",product:"Botol minum isi ulang",options:["Botol minum isi ulang","Kue tradisional","Payung lipat"],type:"Keduanya",keywords:["bawa","hemat sampah","jaga bumi"],why:"Kata “bawa” dan “jaga” merupakan ajakan langsung, sedangkan manfaat “hemat sampah” membujuk pembaca memilih kebiasaan ramah lingkungan."}
+  ];
+  let order=[], index=0, score=0, answered=false, timeLeft=180, timerId=null, locked=false;
+  const $ = id => document.getElementById(id);
+  const screens = ["startScreen","quizScreen","resultScreen"];
+  function showScreen(id){screens.forEach(s=>$(s).classList.toggle("active",s===id));}
+  function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
+  function start(){
+    clearInterval(timerId);order=shuffle(questions.map((_,i)=>i));index=0;score=0;timeLeft=180;answered=false;locked=false;
+    $("score").textContent="0";$("timer").textContent="03:00";showScreen("quizScreen");renderQuestion();
+    timerId=setInterval(()=>{timeLeft--;updateTimer();if(timeLeft<=0){clearInterval(timerId);finish(true);}},1000);
+  }
+  function updateTimer(){const m=Math.floor(timeLeft/60),s=timeLeft%60;$("timer").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");if(timeLeft<=30)$("timer").style.background="#ffe0dd";else $("timer").style.background="";}
+  function renderQuestion(){
+    answered=false;const q=questions[order[index]];
+    $("counter").textContent=`Pertanyaan ${index+1} dari ${questions.length}`;$("slogan").textContent=q.slogan;
+    $("progress").style.width=(index/questions.length*100)+"%";$("feedback").className="feedback";$("feedback").innerHTML="";
+    $("nextBtn").hidden=true;$("choices").innerHTML="";
+    shuffle(q.options).forEach((opt,i)=>{
+      const b=document.createElement("button");b.type="button";b.className="choice";
+      const letter=document.createElement("span");letter.className="letter";letter.textContent=String.fromCharCode(65+i);
+      const label=document.createElement("span");label.textContent=opt;b.append(letter,label);b.addEventListener("click",()=>choose(opt,b));$("choices").appendChild(b);
+    });
+  }
+  function choose(opt,button){
+    if(answered)return;answered=true;const q=questions[order[index]],correct=opt===q.product;
+    if(correct)score++;$("score").textContent=score;
+    [...$("choices").children].forEach(b=>{b.disabled=true;const text=b.lastElementChild.textContent;if(text===q.product)b.classList.add("correct");else if(b===button)b.classList.add("wrong");});
+    const f=$("feedback");f.className="feedback show "+(correct?"good":"bad");
+    f.innerHTML=`<strong>${correct?"✅ Tepat!":"💡 Belum tepat."} Nama produk: ${q.product}.</strong><br><strong>Jenis kalimat:</strong> ${q.type}.<br><strong>Kata kunci:</strong> ${q.keywords.map(k=>`<span class="tag">${k}</span>`).join(" ")}<br>${q.why}`;
+    $("nextBtn").hidden=false;$("nextBtn").textContent=index===questions.length-1?"Lihat Hasil →":"Pertanyaan Berikutnya →";
+    $("progress").style.width=((index+1)/questions.length*100)+"%";
+  }
+  function finish(timeUp=false){
+    clearInterval(timerId);showScreen("resultScreen");$("finalScore").textContent=score;
+    $("correctCount").textContent=score;$("wrongCount").textContent=questions.length-score;
+    $("resultMessage").textContent=timeUp?`Waktu habis! Kamu menjawab ${score} dari ${questions.length} slogan dengan tepat.`:score===6?"Luar biasa! Kamu mengenali semua produk dengan tepat.":score>=4?"Bagus! Kamu sudah cukup cermat membaca slogan.": "Terus berlatih! Perhatikan kata ajakan dan manfaat yang ditawarkan dalam slogan.";
+    $("progress").style.width="100%";
+  }
+  $("startBtn").addEventListener("click",start);$("restartBtn").addEventListener("click",()=>{showScreen("startScreen");$("timer").style.background="";});
+  $("nextBtn").addEventListener("click",()=>{if(!answered)return;if(index<questions.length-1){index++;renderQuestion();}else finish(false);});
+  $("quitBtn").addEventListener("click",()=>finish(false));
+  async function fullscreen(){try{if(!document.fullscreenElement)await $("app").requestFullscreen();else await document.exitFullscreen();}catch(e){alert("Layar penuh tidak tersedia pada peramban ini. Kamu tetap dapat menggunakan kuis seperti biasa.");}}
+  $("fullBtn").addEventListener("click",fullscreen);$("resultFullBtn").addEventListener("click",fullscreen);
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")return;if(e.key==="Enter"&&$("quizScreen").classList.contains("active")&&answered&&!$("nextBtn").hidden)$("nextBtn").click();});
+})();
+</script>
+</body>
+</html>

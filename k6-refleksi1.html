@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiket Keluar — Refleksi 1</title>
+<style>
+:root{--ink:#172554;--muted:#475569;--blue:#1d4ed8;--teal:#0f766e;--line:#cbd5e1;--green:#dcfce7;--amber:#fef3c7}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;font-size:18px;line-height:1.5;color:var(--ink);background:linear-gradient(135deg,#dbeafe,#f8fafc 50%,#ccfbf1)}
+main{max-width:850px;margin:auto;padding:16px}.panel{background:#fff;border:2px solid #dbeafe;border-radius:22px;padding:clamp(18px,4vw,32px);margin:14px 0;box-shadow:0 8px 24px #0f172a0d}
+.hero{background:#17324d;color:#fff;border-radius:18px;padding:clamp(20px,4vw,30px)}.hero p{color:#e2e8f0}.tag{display:inline-block;background:#ccfbf1;color:#134e4a;border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:800}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;margin:14px 0 8px}h2{font-size:clamp(1.25rem,3vw,1.65rem);margin:0 0 12px}p{color:var(--muted);margin:8px 0 14px}
+.field{display:flex;flex-direction:column;gap:7px;margin:16px 0}.field label,.question{font-weight:750}.field input,.field textarea{font:inherit;width:100%;border:2px solid #94a3b8;border-radius:12px;padding:12px;color:#172554;background:#fff;min-height:50px}.field textarea{min-height:100px;resize:vertical}.field input:focus,.field textarea:focus{outline:3px solid #bfdbfe;border-color:var(--blue)}
+.hint{font-size:.92rem;color:#64748b;font-weight:400}.note{background:#eff6ff;border-left:5px solid var(--blue);padding:12px 14px;border-radius:10px;color:#1e40af}
+.scale{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:12px 0}.scale label{border:2px solid var(--line);border-radius:15px;padding:14px 8px;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;min-height:112px}.scale label:has(input:checked){border-color:var(--blue);background:#eff6ff;box-shadow:0 0 0 2px #bfdbfe}.scale input{width:21px;height:21px;accent-color:var(--blue)}.emoji{font-size:2rem;line-height:1.2}.scale strong{font-size:1.15rem}.scale small{font-size:.82rem;color:var(--muted)}
+.options{display:flex;gap:10px;flex-wrap:wrap}.choice{display:flex;align-items:center;gap:9px;border:2px solid var(--line);border-radius:12px;padding:12px;cursor:pointer;flex:1;min-width:125px}.choice:has(input:checked){background:#f0fdf4;border-color:#16a34a}.choice input{width:21px;height:21px;accent-color:var(--teal)}
+button{font:inherit;font-weight:800;border:0;border-radius:13px;padding:13px 18px;min-height:52px;cursor:pointer;touch-action:manipulation}.primary{background:var(--blue);color:#fff}.secondary{background:#e2e8f0;color:#172554}.teal{background:var(--teal);color:#fff}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.actions button{flex:1 1 170px}
+.status{border-radius:12px;padding:12px 14px;margin-top:12px;background:#eff6ff;color:#1e40af;font-weight:700}.status.ok{background:var(--green);color:#166534}.summary{white-space:pre-wrap;overflow-wrap:anywhere;border:2px solid var(--line);background:#f8fafc;padding:14px;border-radius:12px;color:#172554}
+footer{text-align:center;color:#64748b;font-size:.9rem;padding:14px}
+@media(max-width:540px){main{padding:9px}.panel{border-radius:16px}.scale{grid-template-columns:repeat(2,minmax(0,1fr))}.scale label{min-height:100px}.actions button{flex-basis:100%}}
+@media print{body{background:white;color:#000;font-size:12pt}main{max-width:none;padding:0}.panel,.hero{box-shadow:none;border:1px solid #999;border-radius:0;margin:0 0 12px;padding:14px}.hero{background:white;color:#000}.hero p,.hero h1{color:#000}.tag{background:#eee;color:#000}.actions,.no-print{display:none!important}input,textarea{border:1px solid #777!important;color:#000!important}.scale label{border:1px solid #777;min-height:auto}}
+</style>
+</head>
+<body>
+<main>
+<section class="hero">
+<span class="tag">BAHASA INDONESIA • KELAS VIII</span>
+<h1>🎟️ Tiket Keluar: Refleksi 1</h1>
+<p>Luangkan beberapa menit untuk melihat kembali pembelajaran hari ini. Jawabanmu membantu guru mengetahui hal yang sudah dipahami dan hal yang masih perlu dijelaskan.</p>
+</section>
+
+<section class="panel">
+<h2>1. Identitas murid</h2>
+<div class="field"><label for="studentName">Nama lengkap</label><input id="studentName" autocomplete="name" placeholder="Tuliskan nama lengkapmu"></div>
+<div class="field"><label for="groupName">Nama kelompok (opsional)</label><input id="groupName" placeholder="Tuliskan nama kelompok"></div>
+</section>
+
+<section class="panel">
+<h2>2. Ambil contoh dari draf kelompok</h2>
+<div class="field"><label for="imperative">Satu kalimat imperatif</label><textarea id="imperative" placeholder="Salin satu kalimat imperatif dari draf iklan kelompokmu."></textarea><span class="hint">Kalimat imperatif dapat berisi perintah, larangan, ajakan, atau permintaan.</span></div>
+<div class="field"><label for="persuasive">Satu kalimat persuasif</label><textarea id="persuasive" placeholder="Salin satu kalimat persuasif dari draf iklan kelompokmu."></textarea><span class="hint">Kalimat persuasif membujuk pembaca, misalnya dengan alasan atau manfaat yang masuk akal.</span></div>
+</section>
+
+<section class="panel">
+<h2>3. Refleksi singkat</h2>
+<div class="field"><label for="confusing">Bagian mana yang masih membingungkan?</label><textarea id="confusing" placeholder="Contoh: Saya masih bingung membedakan ajakan dan kalimat persuasif."></textarea></div>
+<div class="field">
+<span class="question">Apakah iklanmu sudah jujur?</span>
+<p class="hint">Pertimbangkan apakah manfaatnya masuk akal, tidak berlebihan, dan tidak memuat klaim yang belum terbukti.</p>
+<div class="options">
+<label class="choice"><input type="radio" name="honest" value="Ya"> Ya</label>
+<label class="choice"><input type="radio" name="honest" value="Belum yakin"> Belum yakin</label>
+<label class="choice"><input type="radio" name="honest" value="Belum, perlu diperbaiki"> Belum, perlu diperbaiki</label>
+</div>
+</div>
+</section>
+
+<section class="panel">
+<h2>4. Skala pemahaman</h2>
+<p>Pilih satu angka yang paling sesuai dengan pemahamanmu tentang kalimat imperatif dan persuasif.</p>
+<div class="scale">
+<label><input type="radio" name="understanding" value="1"><span class="emoji">😕</span><strong>1</strong><small>Masih bingung</small></label>
+<label><input type="radio" name="understanding" value="2"><span class="emoji">🙂</span><strong>2</strong><small>Mulai paham</small></label>
+<label><input type="radio" name="understanding" value="3"><span class="emoji">😊</span><strong>3</strong><small>Cukup paham</small></label>
+<label><input type="radio" name="understanding" value="4"><span class="emoji">🤩</span><strong>4</strong><small>Sangat paham</small></label>
+</div>
+<div class="note">Tidak apa-apa jika kamu masih bingung. Jawaban yang jujur membantu guru mendampingi proses belajarmu.</div>
+</section>
+
+<section class="panel">
+<h2>5. Salin hasil untuk guru</h2>
+<p>Periksa rangkuman jawaban, lalu tekan tombol <b>Salin hasil</b>. Setelah itu, tempelkan ke pesan atau tempat pengumpulan yang diarahkan guru.</p>
+<div class="actions no-print"><button class="primary" id="copyBtn">▣ Salin hasil</button><button class="secondary" id="resetBtn">↻ Isi ulang</button><button class="secondary" id="printBtn">⎙ Cetak</button></div>
+<div class="status" id="status" aria-live="polite">Rangkuman akan diperbarui saat kamu mengisi tiket keluar.</div>
+<h3>Pratinjau hasil</h3>
+<div class="summary" id="preview">Isi refleksi untuk melihat rangkuman.</div>
+</section>
+<footer>Tiket Keluar • SMP Negeri 8 Kolaka Utara</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+function radioValue(name){const el=document.querySelector(`input[name="${name}"]:checked`);return el?el.value:'(belum dipilih)'}
+function selectedScale(){const v=radioValue('understanding');if(v==='(belum dipilih)')return v;const desc={'1':'😕 1 — Masih bingung','2':'🙂 2 — Mulai paham','3':'😊 3 — Cukup paham','4':'🤩 4 — Sangat paham'};return desc[v]}
+function makeSummary(){return `TIKET KELUAR — REFLEKSI 1\n\nNama: ${$('studentName').value.trim()||'(belum diisi)'}\nKelompok: ${$('groupName').value.trim()||'(tidak diisi)'}\n\nKalimat imperatif dari draf kelompok:\n${$('imperative').value.trim()||'(belum diisi)'}\n\nKalimat persuasif dari draf kelompok:\n${$('persuasive').value.trim()||'(belum diisi)'}\n\nBagian mana yang masih membingungkan?\n${$('confusing').value.trim()||'(belum diisi)'}\n\nApakah iklanmu sudah jujur?\n${radioValue('honest')}\n\nSkala pemahaman:\n${selectedScale()}`}
+function update(){ $('preview').textContent=makeSummary() }
+async function copySummary(){const text=makeSummary();try{await navigator.clipboard.writeText(text);$('status').className='status ok';$('status').textContent='✓ Hasil berhasil disalin. Sekarang tempelkan ke pesan atau tempat pengumpulan yang diarahkan guru.'}catch(e){const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();$('status').className='status '+(ok?'ok':'');$('status').textContent=ok?'✓ Hasil berhasil disalin. Sekarang tempelkan ke pesan guru.':'Penyalinan otomatis tidak tersedia. Pilih teks pada pratinjau, lalu salin secara manual.'}update()}
+function reset(){if(!confirm('Kosongkan semua jawaban dan mulai mengisi tiket keluar lagi?'))return;document.querySelectorAll('input,textarea').forEach(e=>{if(e.type==='radio')e.checked=false;else e.value=''});$('status').className='status';$('status').textContent='Tiket keluar siap diisi kembali.';update();window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('input,textarea').forEach(e=>e.addEventListener('input',update));
+document.querySelectorAll('input[type="radio"]').forEach(e=>e.addEventListener('change',update));
+$('copyBtn').addEventListener('click',copySummary);$('resetBtn').addEventListener('click',reset);$('printBtn').addEventListener('click',()=>{update();window.print()});update();
+</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kuis Diagnostik — Imperatif dan Persuasif</title>
+<style>
+:root{--navy:#142747;--blue:#2457a6;--pale:#edf4ff;--cream:#fffdf7;--teal:#087e75;--gold:#ffce68;--ink:#1c2940;--muted:#53647b;--green:#18794e;--red:#b42318}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:var(--navy);color:var(--ink)}
+body{min-height:100vh;padding:clamp(8px,2vw,24px);display:flex;align-items:center;justify-content:center}
+button{font:inherit;cursor:pointer;touch-action:manipulation}button:focus-visible{outline:4px solid #f2a900;outline-offset:3px}
+.app{width:min(1400px,100%);min-height:min(880px,95vh);background:var(--cream);border-radius:22px;overflow:hidden;box-shadow:0 20px 55px #0005;display:flex;flex-direction:column}
+header{background:var(--blue);color:white;padding:14px clamp(16px,3vw,36px);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-size:clamp(1rem,2vw,1.25rem);font-weight:800}.head-actions{display:flex;gap:10px;flex-wrap:wrap}
+.head-btn{background:#ffffff18;color:white;border:2px solid #ffffff80;border-radius:12px;padding:10px 14px;font-weight:800;font-size:clamp(.9rem,1.5vw,1.05rem);min-height:46px}
+main{flex:1;padding:clamp(18px,4vw,50px);display:flex;flex-direction:column;justify-content:center}
+.screen{display:none}.screen.active{display:flex;flex-direction:column;gap:20px}
+.hero{padding:clamp(22px,4.5vw,48px);border-radius:22px;background:linear-gradient(130deg,#dff7f3,#e7efff);border:2px solid #d2e4ef}
+.eyebrow{color:var(--blue);text-transform:uppercase;letter-spacing:.12em;font-weight:900;font-size:clamp(.85rem,1.4vw,1rem);margin:0 0 12px}
+h1{font-size:clamp(2rem,5.2vw,4.2rem);line-height:1.06;color:var(--navy);margin:0 0 16px}
+h2{font-size:clamp(1.5rem,3vw,2.4rem);color:var(--navy);margin:0}
+.lead{font-size:clamp(1.1rem,2.1vw,1.45rem);line-height:1.55;margin:0;max-width:900px}
+.stats{display:flex;gap:10px;flex-wrap:wrap}.stat{background:var(--pale);border:1px solid #d2dfef;border-radius:12px;padding:12px 16px;font-size:clamp(.95rem,1.6vw,1.1rem);font-weight:800}
+.primary,.secondary{border-radius:14px;min-height:58px;padding:14px 22px;font-size:clamp(1.05rem,1.9vw,1.25rem);font-weight:900}
+.primary{background:var(--blue);color:white;border:0;box-shadow:0 5px 0 #183e7b}.primary:hover{background:#193f81}
+.secondary{background:#fff;color:var(--navy);border:2px solid #b8c9df}
+.button-row{display:flex;gap:12px;flex-wrap:wrap}.button-row>*{flex:0 1 auto}
+.qtop{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.counter{color:var(--blue);font-size:clamp(1rem,1.7vw,1.2rem);font-weight:900}
+.progress-track{height:12px;border-radius:99px;background:#dbe5f0;overflow:hidden}.progress{height:100%;width:0;background:var(--teal);transition:width .25s}
+.sentence-card{padding:clamp(24px,5vw,48px);border-radius:20px;background:white;border:3px solid #d9e4f0;box-shadow:0 7px 0 #e6ebf2}
+.sentence-label{font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-size:clamp(.85rem,1.5vw,1rem)}
+.sentence{font-size:clamp(1.6rem,4.2vw,3.3rem);font-weight:900;line-height:1.25;color:var(--navy);margin:18px 0 0}
+.prompt{font-size:clamp(1.1rem,2vw,1.4rem);font-weight:800;margin:0}
+.options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.option{min-height:82px;border:3px solid #cbd8e8;background:white;color:var(--navy);border-radius:15px;padding:14px;display:flex;align-items:center;gap:12px;text-align:left;font-size:clamp(1rem,1.9vw,1.3rem);font-weight:800}
+.option:hover:not(:disabled){border-color:var(--blue);background:#f3f7ff}.option:disabled{opacity:1;cursor:default}
+.letter{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border-radius:11px;background:#e7effa;color:var(--blue);font-weight:900}
+.option.selected{border-color:var(--blue);background:#edf4ff}.option.selected .letter{background:var(--blue);color:white}
+.feedback{display:none;padding:16px 20px;border-radius:14px;font-size:clamp(1rem,1.8vw,1.2rem);line-height:1.5;background:#edf7f4;border:2px solid #b5dfd2}.feedback.show{display:block}
+.result-box{padding:clamp(22px,4vw,38px);border-radius:20px;background:#edf7f4;border:2px solid #c4e7dc}
+.score{font-size:clamp(3.5rem,9vw,6.5rem);font-weight:900;color:var(--blue);line-height:1.1}
+.recommendation{font-size:clamp(1.2rem,2.5vw,1.8rem);font-weight:900;color:var(--navy);margin:8px 0}
+.mode-panel{display:none;background:#fff5d9;border:2px solid #e7c66e;border-radius:18px;padding:clamp(18px,3vw,28px)}
+.mode-panel.show{display:block}.mode-panel h2{margin-bottom:14px}.answer-list{display:grid;gap:12px}
+.answer-item{background:#fff;border:1px solid #e8d8a7;border-radius:12px;padding:14px 16px;line-height:1.5;font-size:clamp(.98rem,1.7vw,1.15rem)}
+.answer-item strong{color:var(--navy)}.muted{color:var(--muted);font-size:.95rem}
+footer{background:#edf2f8;padding:12px 18px;text-align:center;color:#52617a;font-size:.9rem}
+@media(max-width:720px){.app{min-height:95vh;border-radius:15px}main{padding:18px}.options{grid-template-columns:1fr}.option{min-height:68px}.button-row>*{flex:1 1 100%}.head-actions{width:100%}.head-btn{flex:1}.sentence-card{padding:24px 18px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+<header>
+  <div class="brand">BAHASA INDONESIA • KELAS VIII</div>
+  <div class="head-actions">
+    <button class="head-btn" id="teacherBtn" type="button" aria-pressed="false">🔐 Mode guru: Mati</button>
+    <button class="head-btn" id="fullBtn" type="button">⛶ Layar Penuh</button>
+  </div>
+</header>
+<main>
+<section class="screen active" id="startScreen">
+  <div class="hero">
+    <p class="eyebrow">Kuis diagnostik • 4 soal</p>
+    <h1>Kenali Kalimat Iklan</h1>
+    <p class="lead">Pilih jenis kalimat yang paling tepat untuk setiap contoh. Kuis ini membantu kita mengetahui bagian yang sudah dikuasai dan yang masih perlu dilatih.</p>
+  </div>
+  <div class="stats"><div class="stat">📝 4 pertanyaan</div><div class="stat">🎯 Skor maksimal 4</div><div class="stat">📚 Imperatif & persuasif</div></div>
+  <p class="lead">Baca setiap kalimat dengan teliti. Jawaban dapat dipilih satu kali untuk setiap soal.</p>
+  <div class="button-row"><button class="primary" id="startBtn">Mulai Diagnostik ▶</button></div>
+  <p class="muted">Catatan: Mode guru dapat dibuka untuk melihat kunci jawaban dan pembahasan.</p>
+</section>
+
+<section class="screen" id="quizScreen">
+  <div class="qtop"><span class="counter" id="counter">Soal 1 dari 4</span><span class="stat">Terjawab: <span id="answeredCount">0</span>/4</span></div>
+  <div class="progress-track"><div class="progress" id="progress"></div></div>
+  <div class="sentence-card"><div class="sentence-label">Perhatikan kalimat berikut</div><p class="sentence" id="sentence"></p></div>
+  <p class="prompt">Kalimat tersebut termasuk …</p>
+  <div class="options" id="options">
+    <button class="option" data-value="imperatif"><span class="letter">A</span><span>Imperatif</span></button>
+    <button class="option" data-value="persuasif"><span class="letter">B</span><span>Persuasif</span></button>
+    <button class="option" data-value="bukan"><span class="letter">C</span><span>Bukan keduanya</span></button>
+  </div>
+  <div class="feedback" id="feedback" aria-live="polite"></div>
+  <div class="button-row"><button class="primary" id="nextBtn" disabled>Soal Berikutnya →</button><button class="secondary" id="finishBtn">Akhiri dan Lihat Hasil</button></div>
+</section>
+
+<section class="screen" id="resultScreen">
+  <div class="hero"><p class="eyebrow">Hasil diagnostik</p><h1>Terima kasih sudah mencoba!</h1><p class="lead">Gunakan hasil ini untuk menentukan langkah belajar berikutnya.</p></div>
+  <div class="result-box">
+    <div class="score"><span id="finalScore">0</span><span style="font-size:.36em;color:#53647b"> / 4 benar</span></div>
+    <p class="recommendation" id="recommendation">Perlu penguatan, gunakan kartu kata kunci</p>
+    <p class="lead" id="resultDetail">Hasilmu akan membantu memilih kegiatan belajar yang sesuai.</p>
+  </div>
+  <div class="button-row"><button class="primary" id="restartBtn">↻ Ulangi</button><button class="secondary" id="resultTeacherBtn">🔐 Mode guru</button><button class="secondary" id="resultFullBtn">⛶ Layar Penuh</button></div>
+  <section class="mode-panel" id="teacherPanel">
+    <h2>Mode guru — Kunci dan pembahasan</h2>
+    <p class="lead" style="font-size:1.05rem;margin-bottom:16px">Gunakan bagian ini untuk membahas alasan klasifikasi bersama murid.</p>
+    <div class="answer-list">
+      <div class="answer-item"><strong>1. “Belilah sekarang sebelum kehabisan!” — A. Imperatif.</strong><br>Kata kunci: “Belilah”. Bentuk perintah atau ajakan langsung diperkuat oleh tanda seru.</div>
+      <div class="answer-item"><strong>2. “Dengan madu ini, daya tahan tubuhmu terjaga.” — B. Persuasif.</strong><br>Kata kunci: “daya tahan tubuhmu terjaga”. Kalimat membujuk dengan menyampaikan manfaat produk, bukan perintah langsung.</div>
+      <div class="answer-item"><strong>3. “Ibu pergi ke pasar.” — C. Bukan keduanya.</strong><br>Kalimat ini menyampaikan informasi biasa. Tidak ada perintah atau bujukan untuk membeli maupun melakukan sesuatu.</div>
+      <div class="answer-item"><strong>4. “Jangan lewatkan promo akhir pekan!” — A. Imperatif.</strong><br>Kata kunci: “Jangan lewatkan”. Bentuk larangan/perintah langsung. Dalam konteks iklan, kalimat ini juga dapat memberi daya bujuk, tetapi untuk klasifikasi diagnostik ini jawaban utama yang dituju adalah imperatif.</div>
+    </div>
+    <p class="muted" style="margin-top:14px">Catatan guru: kalimat imperatif dapat digunakan untuk membujuk dalam iklan. Tekankan fungsi yang paling menonjol pada konteks setiap contoh.</p>
+  </section>
+</section>
+</main>
+<footer>SMP Negeri 8 Kolaka Utara • Pembelajaran Bahasa Indonesia Fase D</footer>
+</div>
+<script>
+(() => {
+ const data=[
+  {text:"“Belilah sekarang sebelum kehabisan!”",key:"imperatif",label:"Imperatif",why:"Kata “Belilah” menyatakan perintah atau ajakan langsung kepada pembaca."},
+  {text:"“Dengan madu ini, daya tahan tubuhmu terjaga.”",key:"persuasif",label:"Persuasif",why:"Kalimat membujuk dengan menonjolkan manfaat yang ditawarkan, tanpa perintah langsung."},
+  {text:"“Ibu pergi ke pasar.”",key:"bukan",label:"Bukan keduanya",why:"Kalimat ini hanya menyampaikan informasi tentang kegiatan Ibu; tidak memerintah atau membujuk."},
+  {text:"“Jangan lewatkan promo akhir pekan!”",key:"imperatif",label:"Imperatif",why:"Ungkapan “Jangan lewatkan” berbentuk larangan atau perintah langsung. Dalam iklan, bentuk ini juga dapat mendukung bujukan."}
+ ];
+ const $=id=>document.getElementById(id);
+ let index=0,answers=[],locked=false;
+ function show(id){["startScreen","quizScreen","resultScreen"].forEach(s=>$(s).classList.toggle("active",s===id));}
+ function start(){index=0;answers=Array(data.length).fill(null);show("quizScreen");render();}
+ function render(){
+  locked=false;const q=data[index];$("counter").textContent=`Soal ${index+1} dari ${data.length}`;$("sentence").textContent=q.text;
+  $("answeredCount").textContent=answers.filter(v=>v!==null).length;$("progress").style.width=(index/data.length*100)+"%";
+  $("feedback").className="feedback";$("feedback").textContent="";$("nextBtn").disabled=true;
+  $("nextBtn").textContent=index===data.length-1?"Lihat Hasil →":"Soal Berikutnya →";
+  document.querySelectorAll(".option").forEach(b=>{b.disabled=false;b.classList.remove("selected");b.setAttribute("aria-pressed","false");});
+ }
+ function answer(value,btn){
+  if(locked)return;locked=true;answers[index]=value;const q=data[index],correct=value===q.key;
+  document.querySelectorAll(".option").forEach(b=>{b.disabled=true;if(b.dataset.value===value){b.classList.add("selected");b.setAttribute("aria-pressed","true");}});
+  $("answeredCount").textContent=answers.filter(v=>v!==null).length;
+  $("progress").style.width=((index+1)/data.length*100)+"%";
+  $("feedback").className="feedback show";
+  $("feedback").innerHTML=`<strong>${correct?"Jawaban tepat.":"Mari pelajari lagi."}</strong> Kategori yang dituju: <strong>${q.label}</strong>. ${q.why}`;
+  $("nextBtn").disabled=false;
+ }
+ function finish(){
+  const total=answers.reduce((n,v,i)=>n+(v===data[i].key?1:0),0);
+  $("finalScore").textContent=total;
+  let rec,detail;
+  if(total<=1){rec="Perlu penguatan, gunakan kartu kata kunci";detail="Latih kembali ciri perintah, bujukan, dan kalimat informasi dengan bantuan kartu kata kunci."}
+  else if(total<=3){rec="Ikuti alur biasa";detail="Kamu sudah mengenali sebagian besar contoh. Lanjutkan kegiatan belajar dan diskusikan contoh yang masih membingungkan."}
+  else{rec="Siap tantangan tambahan";detail="Kamu telah membedakan keempat contoh dengan baik. Cobalah membuat slogan sendiri dan menjelaskan kata kuncinya."}
+  $("recommendation").textContent=rec;$("resultDetail").textContent=detail;show("resultScreen");
+  $("progress").style.width="100%";
+ }
+ document.querySelectorAll(".option").forEach(b=>b.addEventListener("click",()=>answer(b.dataset.value,b)));
+ $("startBtn").addEventListener("click",start);
+ $("nextBtn").addEventListener("click",()=>{if(!locked)return;if(index<data.length-1){index++;render();}else finish();});
+ $("finishBtn").addEventListener("click",finish);
+ $("restartBtn").addEventListener("click",()=>{show("startScreen");$("teacherPanel").classList.remove("show");});
+ const teacherBtns=[$("teacherBtn"),$("resultTeacherBtn")];
+ function toggleTeacher(){
+   const panel=$("teacherPanel"),willShow=!panel.classList.contains("show");
+   panel.classList.toggle("show",willShow);
+   teacherBtns.forEach(b=>{b.textContent=willShow?"🔓 Mode guru: Aktif":"🔐 Mode guru: Mati";b.setAttribute("aria-pressed",String(willShow));});
+   if(willShow && $("resultScreen").classList.contains("active"))panel.scrollIntoView({behavior:"smooth",block:"nearest"});
+ }
+ teacherBtns.forEach(b=>b.addEventListener("click",toggleTeacher));
+ async function fullscreen(){try{if(!document.fullscreenElement)await $("app").requestFullscreen();else await document.exitFullscreen();}catch(e){alert("Layar penuh tidak tersedia pada peramban ini. Konten tetap dapat digunakan.");}}
+ $("fullBtn").addEventListener("click",fullscreen);$("resultFullBtn").addEventListener("click",fullscreen);
+})();
+</script>
+</body>
+</html>

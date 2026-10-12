@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LKPD Digital — Merancang Iklan Produk Lokal</title>
+<style>
+:root{--navy:#17324d;--blue:#1d4ed8;--teal:#0f766e;--paper:#f8fafc;--line:#cbd5e1;--muted:#475569;--green:#dcfce7;--red:#fee2e2;--amber:#fef3c7}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#e0f2fe,#f8fafc 50%,#ccfbf1);font-family:Arial,Helvetica,sans-serif;color:var(--navy);font-size:17px;line-height:1.5}
+main{max-width:1120px;margin:auto;padding:16px}.sheet{background:#fff;border:2px solid #dbeafe;border-radius:20px;padding:clamp(16px,3vw,28px);margin:14px 0;box-shadow:0 8px 24px #0f172a0d}
+.hero{background:#17324d;color:#fff;border-radius:18px;padding:clamp(20px,4vw,34px)}.hero p{color:#e2e8f0}.tag{display:inline-block;background:#dbeafe;color:#1e3a8a;border-radius:999px;padding:5px 12px;font-size:.85rem;font-weight:800;letter-spacing:.02em}.hero .tag{background:#ccfbf1;color:#134e4a}
+h1{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.12;margin:14px 0 8px}h2{font-size:clamp(1.25rem,3vw,1.65rem);margin:0 0 14px}h3{font-size:1.1rem;margin:12px 0 8px}p{color:var(--muted);margin:7px 0 12px}.note{background:#eff6ff;border-left:5px solid var(--blue);padding:12px 14px;border-radius:10px;color:#1e3a8a}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:flex;flex-direction:column;gap:6px}.field label,.label{font-weight:750;color:#1e293b}.field input,.field textarea,.field select{width:100%;font:inherit;color:#172554;border:2px solid #94a3b8;border-radius:11px;padding:11px 12px;background:white;min-height:48px}.field textarea{min-height:92px;resize:vertical}.field input:focus,.field textarea:focus,.field select:focus{outline:3px solid #bfdbfe;border-color:var(--blue)}.wide{grid-column:1/-1}.hint{font-size:.9rem;color:#64748b;font-weight:400}
+.product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.product{display:flex;align-items:flex-start;gap:9px;padding:12px;border:2px solid var(--line);border-radius:13px;min-height:58px;cursor:pointer}.product:has(input:checked){background:#eff6ff;border-color:var(--blue)}input[type=radio],input[type=checkbox]{width:21px;height:21px;accent-color:var(--blue);flex-shrink:0;margin-top:2px}
+button{font:inherit;font-weight:800;border:0;border-radius:12px;padding:12px 17px;min-height:50px;cursor:pointer;touch-action:manipulation}.primary{background:var(--blue);color:#fff}.teal{background:var(--teal);color:#fff}.secondary{background:#e2e8f0;color:#172554}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.actions button{flex:0 1 auto}.checklist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.checkitem{display:flex;gap:10px;align-items:flex-start;border:2px solid var(--line);padding:12px;border-radius:12px}.checkitem:has(input:checked){background:#f0fdf4;border-color:#86efac}
+.status{border-radius:12px;padding:12px 14px;margin:10px 0;font-weight:750}.status.ok{background:var(--green);color:#166534}.status.no{background:var(--red);color:#991b1b}.status.wait{background:var(--amber);color:#854d0e}.status.info{background:#eff6ff;color:#1e40af}
+.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:650px}th,td{border:1px solid #94a3b8;padding:9px;text-align:left;vertical-align:top}th{background:#e0f2fe;color:#172554}td input,td select{width:100%;font:inherit;padding:8px;border:1px solid #94a3b8;border-radius:8px;min-height:42px}
+.small{font-size:.9rem;color:#64748b}.summary{white-space:pre-wrap;background:#f8fafc;border:2px solid var(--line);padding:14px;border-radius:12px;overflow-wrap:anywhere}
+footer{text-align:center;color:#64748b;font-size:.9rem;padding:14px}
+@media(max-width:760px){main{padding:9px}.grid{grid-template-columns:1fr}.product-grid{grid-template-columns:1fr}.checklist{grid-template-columns:1fr}.wide{grid-column:auto}.sheet{border-radius:15px}.hero{border-radius:15px}button{flex:1 1 100%}}
+@media print{body{background:white;color:#000;font-size:11pt}main{max-width:none;padding:0}.sheet,.hero{box-shadow:none;border:1px solid #999;border-radius:0;margin:0 0 12px;padding:14px}.hero{background:#fff;color:#000}.hero p,.hero h1{color:#000}.hero .tag,.tag{background:#eee;color:#000}button,.actions,.no-print{display:none!important}input,textarea,select{border:1px solid #777!important;color:#000!important;background:white!important}textarea{min-height:60px}table{min-width:0;font-size:9pt}th,td{padding:5px}footer{padding:5px}.status{border:1px solid #777;background:white!important;color:#000!important}}
+</style>
+</head>
+<body>
+<main>
+<section class="hero">
+<span class="tag">BAHASA INDONESIA • KELAS VIII</span>
+<h1>LKPD Digital: Rancang Iklan Produk Lokal</h1>
+<p>Proyek kelompok • Menggunakan kalimat imperatif dan persuasif secara santun, jelas, dan jujur.</p>
+<p style="margin-bottom:0">Isi lembar kerja bersama kelompok. Gunakan produk lokal Kolaka Utara sebagai inspirasi. Semua bagian dapat diedit, disalin, dan dicetak.</p>
+</section>
+
+<section class="sheet">
+<h2>1. Identitas kelompok</h2>
+<div class="grid">
+<div class="field"><label for="groupName">Nama kelompok</label><input id="groupName" placeholder="Contoh: Kelompok Kakao Kreatif"></div>
+<div class="field"><label for="className">Kelas</label><input id="className" value="VIII" placeholder="Kelas"></div>
+<div class="field wide"><label>Nama anggota (3–4 orang)</label><div class="grid">
+<div class="field"><input id="member1" placeholder="Anggota 1"></div><div class="field"><input id="member2" placeholder="Anggota 2"></div><div class="field"><input id="member3" placeholder="Anggota 3"></div><div class="field"><input id="member4" placeholder="Anggota 4 (opsional)"></div>
+</div><span class="hint">Isi minimal tiga nama anggota.</span></div>
+</div>
+</section>
+
+<section class="sheet">
+<h2>2. Pilih produk dan sasaran pembeli</h2>
+<p>Pilih satu produk yang akan diiklankan. Jika memilih produk lain, tuliskan namanya.</p>
+<div class="product-grid">
+<label class="product"><input type="radio" name="product" value="Kakao atau olahan kakao"> <span><b>Kakao / olahan kakao</b><br><span class="hint">Contoh: bubuk kakao</span></span></label>
+<label class="product"><input type="radio" name="product" value="Madu hutan"> <span><b>Madu hutan</b><br><span class="hint">Contoh: madu dalam kemasan</span></span></label>
+<label class="product"><input type="radio" name="product" value="Ikan olahan"> <span><b>Ikan olahan</b><br><span class="hint">Contoh: ikan asap atau abon ikan</span></span></label>
+<label class="product"><input type="radio" name="product" value="Anyaman"> <span><b>Anyaman</b><br><span class="hint">Contoh: keranjang atau tikar</span></span></label>
+<label class="product"><input type="radio" name="product" value="Produk lokal lainnya"> <span><b>Produk lokal lainnya</b><br><span class="hint">Tulis nama produk di bawah.</span></span></label>
+</div>
+<div class="grid" style="margin-top:14px">
+<div class="field"><label for="otherProduct">Nama produk / jenis produk</label><input id="otherProduct" placeholder="Isi jika perlu, misalnya keripik pisang"></div>
+<div class="field"><label for="buyer">Sasaran pembeli</label><input id="buyer" placeholder="Contoh: keluarga, pelajar, atau wisatawan"></div>
+<div class="field wide"><label for="buyerReason">Mengapa produk ini cocok untuk sasaran tersebut?</label><textarea id="buyerReason" placeholder="Tuliskan alasan yang masuk akal, misalnya mudah dibawa sebagai oleh-oleh."></textarea></div>
+</div>
+</section>
+
+<section class="sheet">
+<h2>3. Rancangan iklan kelompok</h2>
+<div class="grid">
+<div class="field wide"><label for="slogan">Slogan iklan</label><input id="slogan" placeholder="Contoh: Rasa Lokal, Cerita Istimewa!"></div>
+<div class="field"><label for="imperative">Satu kalimat imperatif</label><textarea id="imperative" placeholder="Contoh: Cobalah abon ikan lokal hari ini!"></textarea><span class="hint">Petunjuk: perintah, larangan, ajakan, atau permintaan. Contoh kata: ayo, mari, cobalah, jangan.</span></div>
+<div class="field"><label for="persuasive">Satu kalimat persuasif</label><textarea id="persuasive" placeholder="Contoh: Abon ikan praktis dinikmati bersama nasi saat bepergian."></textarea><span class="hint">Petunjuk: bujuk pembeli dengan alasan atau manfaat yang masuk akal.</span></div>
+<div class="field wide"><label for="benefit">Alasan atau manfaat produk</label><textarea id="benefit" placeholder="Tuliskan manfaat atau keunggulan yang benar dan dapat dijelaskan."></textarea><span class="hint">Hindari klaim yang belum terbukti, berlebihan, atau menjanjikan hasil pasti.</span></div>
+</div>
+<div class="note" style="margin-top:14px"><b>Contoh:</b> Imperatif: “Cobalah keripik pisang lokal!” Persuasif: “Keripik pisang renyah cocok menjadi teman bersantai karena mudah dibawa.” Pastikan isi iklan kelompokmu sesuai dengan produk sebenarnya.</div>
+</section>
+
+<section class="sheet">
+<h2>4. Jadwal dan pembagian tugas</h2>
+<p>Atur siapa yang bertanggung jawab pada setiap tahap. Sesuaikan jadwal dengan kesepakatan kelompok.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Tahap</th><th>Rencana kegiatan</th><th>Penanggung jawab</th><th>Target waktu</th></tr></thead>
+<tbody>
+<tr><td><b>Draf</b></td><td>Menulis slogan, kalimat imperatif, persuasif, dan alasan/manfaat.</td><td><input id="taskDraft" placeholder="Nama anggota"></td><td><input id="timeDraft" placeholder="Hari/tanggal"></td></tr>
+<tr><td><b>Perbaikan</b></td><td>Memeriksa ciri kalimat, kejelasan alasan, dan kesantunan.</td><td><input id="taskRevise" placeholder="Nama anggota"></td><td><input id="timeRevise" placeholder="Hari/tanggal"></td></tr>
+<tr><td><b>Desain</b></td><td>Mengatur gambar, warna, tulisan, dan tata letak iklan.</td><td><input id="taskDesign" placeholder="Nama anggota"></td><td><input id="timeDesign" placeholder="Hari/tanggal"></td></tr>
+<tr><td><b>Presentasi</b></td><td>Menjelaskan sasaran pembeli dan pilihan kalimat dalam iklan.</td><td><input id="taskPresent" placeholder="Nama anggota"></td><td><input id="timePresent" placeholder="Hari/tanggal"></td></tr>
+</tbody></table></div>
+</section>
+
+<section class="sheet">
+<h2>5. Pengecek otomatis rancangan iklan</h2>
+<p>Pengecek ini memberi petunjuk berdasarkan kata atau frasa yang umum digunakan. Hasilnya adalah bantuan awal, bukan penilaian bahasa yang sempurna.</p>
+<div id="imperativeCheck" class="status wait">◷ Unsur imperatif: belum diperiksa.</div>
+<div id="persuasiveCheck" class="status wait">◷ Unsur persuasif: belum diperiksa.</div>
+<div id="reasonCheck" class="status wait">◷ Alasan/manfaat: belum diperiksa.</div>
+<div id="targetCheck" class="status wait">◷ Sasaran pembeli: belum diisi.</div>
+<button class="primary no-print" id="checkBtn">Periksa rancangan</button>
+</section>
+
+<section class="sheet">
+<h2>6. Daftar periksa Formatif 2</h2>
+<p>Beri tanda centang setelah kelompok memeriksa rancangan bersama.</p>
+<div class="checklist">
+<label class="checkitem"><input type="checkbox" id="fcImperative"><span><b>Ada kalimat imperatif</b><br><span class="hint">Berisi perintah, larangan, ajakan, atau permintaan.</span></span></label>
+<label class="checkitem"><input type="checkbox" id="fcPersuasive"><span><b>Ada kalimat persuasif dengan alasan</b><br><span class="hint">Bujukan didukung alasan atau manfaat yang jelas.</span></span></label>
+<label class="checkitem"><input type="checkbox" id="fcHonest"><span><b>Isi iklan tidak berlebihan</b><br><span class="hint">Tidak memuat klaim yang belum terbukti atau janji berlebihan.</span></span></label>
+<label class="checkitem"><input type="checkbox" id="fcPolite"><span><b>Bahasa santun</b><br><span class="hint">Pilihan kata menghormati calon pembeli.</span></span></label>
+</div>
+<div id="formativeStatus" class="status wait" aria-live="polite">Daftar periksa: 0 dari 4 unsur ditandai.</div>
+<p class="small">Centang hanya setelah kelompok benar-benar memeriksa unsur tersebut.</p>
+</section>
+
+<section class="sheet">
+<h2>7. Salin atau cetak hasil kerja</h2>
+<p>Gunakan tombol salin untuk menyalin rangkuman teks, atau cetak lembar kerja untuk didiskusikan dan dipresentasikan.</p>
+<div class="actions no-print"><button class="teal" id="copyBtn">▣ Salin hasil</button><button class="primary" id="printBtn">⎙ Cetak</button><button class="secondary" id="resetBtn">↻ Kosongkan lembar</button></div>
+<div class="status info" id="copyStatus" aria-live="polite">Lengkapi lembar kerja, lalu pilih “Salin hasil” atau “Cetak”.</div>
+<h3>Pratinjau rangkuman</h3>
+<div class="summary" id="preview">Rangkuman akan muncul di sini setelah kamu mengisi lembar kerja.</div>
+</section>
+<footer>LKPD Digital • Bahasa Indonesia Kelas VIII • SMP Negeri 8 Kolaka Utara</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const ids=['groupName','className','member1','member2','member3','member4','otherProduct','buyer','buyerReason','slogan','imperative','persuasive','benefit','taskDraft','timeDraft','taskRevise','timeRevise','taskDesign','timeDesign','taskPresent','timePresent'];
+function val(id){return $(id).value.trim()}
+function selectedProduct(){const el=document.querySelector('input[name="product"]:checked');return el?el.value:''}
+function productName(){return val('otherProduct')||selectedProduct()||'(belum dipilih)'}
+function setStatus(id,ok,good,bad){const e=$(id);e.className='status '+(ok?'ok':'no');e.textContent=(ok?'✓ ':'✗ ')+(ok?good:bad)}
+function check(){
+ const imp=val('imperative').toLowerCase();
+ const per=val('persuasive').toLowerCase();
+ const impPattern=/(^|\b)(ayo|mari|marilah|silakan|tolong|cobalah|gunakan|pilih|rasakan|nikmati|dapatkan|bawalah|belilah|jangan|hindari|buatlah|kunjungi|coba)(\b|!)/i;
+ const impOk=impPattern.test(imp);
+ const perPattern=/(karena|sebab|agar|sehingga|membantu|membuat|cocok|praktis|bermanfaat|manfaat|lebih|dapat|memudahkan|menjadi|nikmat|lezat|renyah|tahan lama)/i;
+ const perOk=perPattern.test(per);
+ const reasonOk=val('benefit').length>=12||/(karena|sebab|agar|sehingga|membantu|membuat|cocok|praktis|bermanfaat|manfaat|memudahkan)/i.test(per);
+ setStatus('imperativeCheck',impOk,'Unsur imperatif terdeteksi. Periksa kembali apakah kalimat benar-benar menyatakan perintah, larangan, ajakan, atau permintaan.','Unsur imperatif belum terdeteksi. Coba gunakan bentuk seperti “Ayo…”, “Cobalah…”, atau “Jangan…”.');
+ setStatus('persuasiveCheck',perOk,'Petunjuk persuasif terdeteksi. Pastikan kalimat membujuk dengan alasan atau manfaat yang masuk akal.','Petunjuk persuasif belum terdeteksi. Tambahkan alasan atau manfaat yang jelas, misalnya dengan “karena” atau “membantu”.');
+ setStatus('reasonCheck',reasonOk,'Alasan/manfaat sudah diisi atau tampak dalam kalimat persuasif. Pastikan sesuai fakta.','Alasan/manfaat belum cukup jelas. Tuliskan manfaat yang relevan dan dapat dipertanggungjawabkan.');
+ setStatus('targetCheck',val('buyer').length>0,'Sasaran pembeli sudah diisi.','Sasaran pembeli belum diisi.');
+ return {impOk,perOk,reasonOk};
+}
+function formative(){const checks=['fcImperative','fcPersuasive','fcHonest','fcPolite'];const n=checks.filter(id=>$(id).checked).length;const e=$('formativeStatus');e.className='status '+(n===4?'ok':n===0?'no':'wait');e.textContent=`Daftar periksa: ${n} dari 4 unsur ditandai.`}
+function collect(){
+ const p=selectedProduct()||'(belum dipilih)';
+ const members=[val('member1'),val('member2'),val('member3'),val('member4')].filter(Boolean);
+ const checks=[['Ada imperatif',$('fcImperative').checked],['Ada persuasif dengan alasan',$('fcPersuasive').checked],['Tidak berlebihan',$('fcHonest').checked],['Bahasa santun',$('fcPolite').checked]];
+ return `LKPD DIGITAL: RANCANG IKLAN PRODUK LOKAL\n\nIDENTITAS KELOMPOK\nNama kelompok: ${val('groupName')||'(belum diisi)'}\nKelas: ${val('className')||'(belum diisi)'}\nAnggota: ${members.join(', ')||'(belum diisi)'}\n\nPRODUK DAN SASARAN\nProduk: ${p}${val('otherProduct')?' — '+val('otherProduct'):''}\nSasaran pembeli: ${val('buyer')||'(belum diisi)'}\nAlasan memilih sasaran: ${val('buyerReason')||'(belum diisi)'}\n\nRANCANGAN IKLAN\nSlogan: ${val('slogan')||'(belum diisi)'}\nKalimat imperatif: ${val('imperative')||'(belum diisi)'}\nKalimat persuasif: ${val('persuasive')||'(belum diisi)'}\nAlasan/manfaat: ${val('benefit')||'(belum diisi)'}\n\nJADWAL DAN PEMBAGIAN TUGAS\nDraf: ${val('taskDraft')||'(belum diisi)'} — ${val('timeDraft')||'(belum diisi)'}\nPerbaikan: ${val('taskRevise')||'(belum diisi)'} — ${val('timeRevise')||'(belum diisi)'}\nDesain: ${val('taskDesign')||'(belum diisi)'} — ${val('timeDesign')||'(belum diisi)'}\nPresentasi: ${val('taskPresent')||'(belum diisi)'} — ${val('timePresent')||'(belum diisi)'}\n\nDAFTAR PERIKSA FORMATIF 2\n${checks.map(([t,c])=>(c?'[✓] ':'[ ] ')+t).join('\n')}`;
+}
+function updatePreview(){ $('preview').textContent=collect() }
+async function copyResult(){
+ check();formative();const text=collect();
+ try{await navigator.clipboard.writeText(text);$('copyStatus').className='status ok';$('copyStatus').textContent='✓ Hasil kerja berhasil disalin. Kamu dapat menempelkannya ke dokumen atau pesan kelompok.'}
+ catch(e){const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();$('copyStatus').className='status '+(ok?'ok':'no');$('copyStatus').textContent=ok?'✓ Hasil kerja berhasil disalin.':'Penyalinan otomatis tidak tersedia. Kamu dapat memilih teks pada pratinjau lalu menyalinnya secara manual.'}
+ updatePreview();
+}
+function resetAll(){if(!confirm('Kosongkan semua isian dan tanda centang pada lembar kerja?'))return;document.querySelectorAll('input,textarea').forEach(e=>{if(e.type==='radio'||e.type==='checkbox')e.checked=false;else if(e.id==='className')e.value='VIII';else e.value=''});['imperativeCheck','persuasiveCheck','reasonCheck','targetCheck'].forEach((id,i)=>{const labels=['Unsur imperatif: belum diperiksa.','Unsur persuasif: belum diperiksa.','Alasan/manfaat: belum diperiksa.','Sasaran pembeli: belum diisi.'];$(id).className='status wait';$(id).textContent='◷ '+labels[i]});formative();updatePreview();$('copyStatus').className='status info';$('copyStatus').textContent='Lembar kerja telah dikosongkan.'}
+ids.forEach(id=>$(id).addEventListener('input',updatePreview));
+document.querySelectorAll('input[name="product"]').forEach(e=>e.addEventListener('change',updatePreview));
+document.querySelectorAll('.checkitem input').forEach(e=>e.addEventListener('change',()=>{formative();updatePreview()}));
+$('checkBtn').addEventListener('click',()=>{check();updatePreview()});
+$('copyBtn').addEventListener('click',copyResult);
+$('printBtn').addEventListener('click',()=>{check();formative();updatePreview();window.print()});
+$('resetBtn').addEventListener('click',resetAll);
+updatePreview();formative();
+</script>
+</body>
+</html>

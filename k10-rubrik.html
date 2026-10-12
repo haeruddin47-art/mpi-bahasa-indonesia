@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rubrik Penilaian Proyek Iklan</title>
+<style>
+:root{--navy:#15324e;--blue:#1769aa;--teal:#087e72;--gold:#ffd166;--ink:#1b2c3b;--muted:#566b7d;--bg:#f1f6fa;--line:#cbd9e5;--white:#fff;--pale:#e8f4ff;--green:#e3f7ed}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.5 Arial,Helvetica,sans-serif}button,select,input{font:inherit}button,select,input{min-height:48px}button{border:0;border-radius:13px;padding:11px 17px;font-weight:800;cursor:pointer}button:focus-visible,select:focus-visible,input:focus-visible{outline:4px solid var(--gold);outline-offset:3px}
+header{background:var(--navy);color:white;padding:23px clamp(16px,4vw,42px)}.eyebrow{font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;color:#bde4ff;font-weight:800}h1{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.15;margin:7px 0 8px}header p{margin:0;color:#e8f4ff;max-width:900px}
+main{max-width:1200px;margin:auto;padding:22px clamp(12px,3vw,28px) 40px}.card{background:var(--white);border:2px solid var(--line);border-radius:20px;padding:clamp(16px,3vw,26px);margin-bottom:18px;box-shadow:0 7px 20px #17314a0a}.card h2{color:var(--navy);margin:0 0 8px;font-size:clamp(1.35rem,3vw,1.8rem)}.muted{color:var(--muted)}.intro{margin:0 0 16px;color:var(--muted)}
+.toolbar{display:flex;align-items:end;gap:14px;flex-wrap:wrap}.field{display:flex;flex-direction:column;gap:6px;min-width:220px;flex:1}.field label{font-weight:800;color:var(--navy)}select,input{border:2px solid #b7c8d6;border-radius:12px;padding:10px 12px;background:white;color:var(--ink);width:100%}.primary{background:var(--blue);color:#fff}.secondary{background:#e4edf4;color:var(--navy)}.teal{background:var(--teal);color:white}.gold{background:var(--gold);color:#3a2b00}
+.level-key{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}.level{border-radius:14px;padding:12px;background:#f3f8fb;border:1px solid var(--line)}.level b{display:block;color:var(--navy);font-size:1.05rem}.level span{font-size:.92rem;color:var(--muted)}
+.aspects{display:grid;gap:14px}.aspect{border:1px solid var(--line);border-radius:16px;overflow:hidden}.aspect-head{padding:13px 16px;background:var(--pale);font-weight:900;color:var(--navy)}.aspect-body{padding:14px 16px}.description{font-size:.95rem;color:var(--muted);margin:0 0 12px}.levels{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.level-btn{background:#f6f9fb;color:var(--ink);border:2px solid var(--line);text-align:left;padding:10px 12px;min-height:94px}.level-btn strong{display:block;color:var(--navy);font-size:1.15rem}.level-btn span{font-size:.9rem;font-weight:500;display:block;margin-top:3px}.level-btn.active{border-color:var(--blue);background:#deefff;box-shadow:0 0 0 2px #1769aa1a}.level-btn.active strong{color:#064e82}
+.scorebox{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}.scoreitem{background:#f6f9fb;border:1px solid var(--line);border-radius:15px;padding:15px}.scoreitem span{display:block;color:var(--muted);font-size:.92rem;font-weight:700}.scoreitem strong{display:block;color:var(--navy);font-size:clamp(1.6rem,4vw,2.3rem);font-variant-numeric:tabular-nums}.scoreitem.emphasis{background:var(--green);border-color:#a7dbc3}.scoreitem.emphasis strong{color:var(--teal)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.actions button{flex:0 1 auto}.notice{background:#fff5d9;border:1px solid #e8cb74;border-radius:13px;padding:12px 15px;color:#604700;margin-top:14px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px}table{border-collapse:collapse;width:100%;min-width:720px;background:white}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:middle}th{background:var(--navy);color:white;font-size:.95rem}tbody tr:nth-child(even){background:#f6f9fb}tbody tr:last-child td{border-bottom:0}.num{text-align:center;font-variant-numeric:tabular-nums}.active-row{outline:3px solid var(--gold);outline-offset:-3px}.small-btn{min-height:38px;padding:7px 10px;font-size:.9rem}.empty{color:var(--muted);font-style:italic}.status{font-weight:800;color:var(--teal)}.footer{text-align:center;color:var(--muted);font-size:.9rem;margin:10px}
+@media(max-width:760px){.level-key{grid-template-columns:repeat(2,minmax(0,1fr))}.levels{grid-template-columns:repeat(2,minmax(0,1fr))}.level-btn{min-height:86px}.scorebox{grid-template-columns:1fr}.toolbar .field{min-width:100%}.actions button{flex:1 1 140px}}
+@media print{body{background:white;font-size:12pt}header{background:white;color:#111;padding:10px}header p{color:#333}.actions,.toolbar button{display:none!important}.card{box-shadow:none;break-inside:avoid}.level-btn{min-height:0}}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">Bahasa Indonesia • Kelas VIII • Penilaian proyek</div>
+  <h1>Rubrik Penilaian Proyek Iklan</h1>
+  <p>Gunakan rubrik ini untuk menilai poster atau rekaman suara iklan setiap kelompok secara konsisten.</p>
+</header>
+<main>
+  <section class="card">
+    <h2>1. Pilih kelompok dan beri skor</h2>
+    <p class="intro">Pilih kelompok 1–6, lalu pilih satu level (1–4) pada setiap aspek. Deskripsi level membantu guru menentukan skor berdasarkan bukti pada karya dan presentasi.</p>
+    <div class="toolbar">
+      <div class="field"><label for="groupSelect">Kelompok yang dinilai</label><select id="groupSelect">
+        <option value="1">Kelompok 1</option><option value="2">Kelompok 2</option><option value="3">Kelompok 3</option><option value="4">Kelompok 4</option><option value="5">Kelompok 5</option><option value="6">Kelompok 6</option>
+      </select></div>
+      <div class="field"><label for="notes">Catatan guru (opsional)</label><input id="notes" placeholder="Contoh: perjelas alasan pada kalimat persuasif"></div>
+    </div>
+    <div class="level-key" aria-label="Arti level">
+      <div class="level"><b>Level 4 — Sangat baik</b><span>Tepat, jelas, mandiri, dan konsisten.</span></div>
+      <div class="level"><b>Level 3 — Baik</b><span>Sudah tepat dengan kekurangan kecil.</span></div>
+      <div class="level"><b>Level 2 — Cukup</b><span>Mulai tampak, tetapi perlu beberapa perbaikan.</span></div>
+      <div class="level"><b>Level 1 — Perlu bimbingan</b><span>Belum tampak atau masih banyak kekeliruan.</span></div>
+    </div>
+    <div class="aspects" id="aspects">
+      <article class="aspect" data-aspect="0">
+        <div class="aspect-head">Aspek 1. Ketepatan kalimat imperatif</div>
+        <div class="aspect-body"><p class="description">Nilai ketepatan bentuk perintah, larangan, permintaan, atau ajakan yang sesuai dengan tujuan iklan.</p><div class="levels">
+          <button class="level-btn" data-level="4"><strong>4 · Sangat baik</strong><span>Kalimat imperatif tepat, jelas, santun, dan efektif.</span></button>
+          <button class="level-btn" data-level="3"><strong>3 · Baik</strong><span>Kalimat tepat dan mudah dipahami; ada kekurangan kecil.</span></button>
+          <button class="level-btn" data-level="2"><strong>2 · Cukup</strong><span>Bentuk imperatif kurang konsisten atau ajakan kurang jelas.</span></button>
+          <button class="level-btn" data-level="1"><strong>1 · Perlu bimbingan</strong><span>Kalimat belum menunjukkan imperatif dengan tepat.</span></button>
+        </div></div>
+      </article>
+      <article class="aspect" data-aspect="1">
+        <div class="aspect-head">Aspek 2. Ketepatan kalimat persuasif</div>
+        <div class="aspect-body"><p class="description">Nilai kemampuan membujuk melalui alasan atau manfaat yang masuk akal dan relevan.</p><div class="levels">
+          <button class="level-btn" data-level="4"><strong>4 · Sangat baik</strong><span>Bujukan kuat, alasan/manfaat relevan, dan jelas.</span></button>
+          <button class="level-btn" data-level="3"><strong>3 · Baik</strong><span>Bujukan tepat dengan alasan yang cukup jelas.</span></button>
+          <button class="level-btn" data-level="2"><strong>2 · Cukup</strong><span>Sudah membujuk, tetapi alasan/manfaat masih umum.</span></button>
+          <button class="level-btn" data-level="1"><strong>1 · Perlu bimbingan</strong><span>Kalimat persuasif atau alasan belum tampak jelas.</span></button>
+        </div></div>
+      </article>
+      <article class="aspect" data-aspect="2">
+        <div class="aspect-head">Aspek 3. Kejujuran dan kesantunan</div>
+        <div class="aspect-body"><p class="description">Nilai apakah iklan menghindari klaim berlebihan, informasi menyesatkan, dan bahasa yang tidak santun.</p><div class="levels">
+          <button class="level-btn" data-level="4"><strong>4 · Sangat baik</strong><span>Semua klaim wajar; bahasa santun dan bertanggung jawab.</span></button>
+          <button class="level-btn" data-level="3"><strong>3 · Baik</strong><span>Umumnya jujur dan santun; ada bagian kecil yang perlu diperjelas.</span></button>
+          <button class="level-btn" data-level="2"><strong>2 · Cukup</strong><span>Ada klaim yang kurang jelas atau pilihan kata kurang santun.</span></button>
+          <button class="level-btn" data-level="1"><strong>1 · Perlu bimbingan</strong><span>Masih ada klaim berlebihan/menyesatkan atau bahasa tidak santun.</span></button>
+        </div></div>
+      </article>
+      <article class="aspect" data-aspect="3">
+        <div class="aspect-head">Aspek 4. Kreativitas dan presentasi</div>
+        <div class="aspect-body"><p class="description">Nilai orisinalitas, keterbacaan poster atau kejelasan rekaman suara, kerja sama, dan penyampaian pesan.</p><div class="levels">
+          <button class="level-btn" data-level="4"><strong>4 · Sangat baik</strong><span>Karya kreatif, rapi/jelas, dan presentasi percaya diri serta runtut.</span></button>
+          <button class="level-btn" data-level="3"><strong>3 · Baik</strong><span>Karya menarik dan mudah dipahami; presentasi cukup runtut.</span></button>
+          <button class="level-btn" data-level="2"><strong>2 · Cukup</strong><span>Karya cukup dipahami, tetapi desain/audio atau penyampaian perlu diperbaiki.</span></button>
+          <button class="level-btn" data-level="1"><strong>1 · Perlu bimbingan</strong><span>Karya sulit dipahami atau presentasi belum terstruktur.</span></button>
+        </div></div>
+      </article>
+    </div>
+    <div class="scorebox" aria-live="polite">
+      <div class="scoreitem"><span>Total skor</span><strong id="total">0 / 16</strong></div>
+      <div class="scoreitem"><span>Aspek dinilai</span><strong id="rated">0 / 4</strong></div>
+      <div class="scoreitem emphasis"><span>Nilai (total ÷ 16 × 100)</span><strong id="grade">—</strong></div>
+    </div>
+    <div class="notice" id="scoreMessage">Pilih level pada keempat aspek untuk menyelesaikan penilaian kelompok ini. Nilai akhir dihitung dari total skor dibagi 16 dikali 100.</div>
+    <div class="actions">
+      <button class="teal" id="saveGroup">Simpan skor kelompok</button>
+      <button class="secondary" id="clearGroup">Hapus skor kelompok ini</button>
+      <button class="secondary" id="print">Cetak rubrik</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>2. Rekap penilaian enam kelompok</h2>
+    <p class="intro">Rekap diperbarui saat skor kelompok disimpan. Kelompok yang belum dinilai tetap ditampilkan agar guru dapat memantau kemajuan.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Kelompok</th><th class="num">Imperatif</th><th class="num">Persuasif</th><th class="num">Jujur & santun</th><th class="num">Kreativitas</th><th class="num">Total / 16</th><th class="num">Nilai / 100</th><th>Status</th><th>Catatan guru</th><th>Aksi</th></tr></thead>
+        <tbody id="summaryBody"></tbody>
+      </table>
+    </div>
+    <div class="actions">
+      <button class="primary" id="copySummary">Salin rekap</button>
+      <button class="secondary" id="clearAll">Reset seluruh rekap</button>
+    </div>
+    <p class="muted" id="copyStatus" aria-live="polite">Pilih “Salin rekap” untuk menyalin ringkasan yang dapat ditempel ke dokumen atau spreadsheet.</p>
+  </section>
+  <p class="muted" style="text-align:center;font-size:.9rem">Catatan: skor tersimpan sementara di halaman yang sedang dibuka. Salin rekap sebelum menutup atau memuat ulang halaman.</p>
+</main>
+<script>
+const groups={};for(let i=1;i<=6;i++)groups[i]={scores:[0,0,0,0],notes:'',saved:false};
+let current=1;
+const $=id=>document.getElementById(id);
+function calc(scores){const rated=scores.filter(n=>n>0).length,total=scores.reduce((a,b)=>a+b,0);return{rated,total,grade:rated===4?Math.round(total/16*100):null}}
+function renderForm(){const g=groups[current];$('groupSelect').value=String(current);$('notes').value=g.notes;
+document.querySelectorAll('.aspect').forEach((article,i)=>article.querySelectorAll('.level-btn').forEach(btn=>btn.classList.toggle('active',Number(btn.dataset.level)===g.scores[i])));
+const c=calc(g.scores);$('total').textContent=`${c.total} / 16`;$('rated').textContent=`${c.rated} / 4`;$('grade').textContent=c.grade===null?'—':String(c.grade);
+$('scoreMessage').textContent=c.rated<4?`Pilih level untuk ${4-c.rated} aspek lagi. Nilai akhir muncul setelah keempat aspek dinilai.`:`Penilaian lengkap. Nilai kelompok ${current}: ${c.grade}/100.${g.saved?' Skor sudah disimpan ke rekap.':' Tekan “Simpan skor kelompok” untuk memasukkan ke rekap.'}`;
+}
+function renderSummary(){const body=$('summaryBody');body.innerHTML='';for(let n=1;n<=6;n++){const g=groups[n],c=calc(g.scores),tr=document.createElement('tr');if(n===current)tr.classList.add('active-row');
+const values=[`Kelompok ${n}`,...g.scores.map(v=>v||'—'),c.rated===4?c.total:'—',c.grade===null?'—':c.grade,g.saved?'Tersimpan':c.rated?'Belum disimpan':'Belum dinilai',g.notes||'—'];
+values.forEach((v,i)=>{const td=document.createElement('td');td.textContent=v;if(i>=1&&i<=6)td.className='num';if(i===7){td.className=g.saved?'status':''}tr.appendChild(td)});
+const action=document.createElement('td'),btn=document.createElement('button');btn.className='secondary small-btn';btn.textContent='Pilih';btn.addEventListener('click',()=>{current=n;renderForm();renderSummary();window.scrollTo({top:0,behavior:'smooth'})});action.appendChild(btn);tr.appendChild(action);body.appendChild(tr)}}
+$('groupSelect').addEventListener('change',e=>{current=Number(e.target.value);renderForm();renderSummary()});
+$('notes').addEventListener('input',e=>{groups[current].notes=e.target.value;renderSummary()});
+document.querySelectorAll('.aspect').forEach((article,i)=>article.querySelectorAll('.level-btn').forEach(btn=>btn.addEventListener('click',()=>{groups[current].scores[i]=Number(btn.dataset.level);groups[current].saved=false;renderForm();renderSummary()})));
+$('saveGroup').addEventListener('click',()=>{const g=groups[current],c=calc(g.scores);if(c.rated!==4){$('scoreMessage').textContent='Belum dapat disimpan sebagai penilaian lengkap. Beri skor pada keempat aspek terlebih dahulu.';return}g.saved=true;renderForm();renderSummary();$('scoreMessage').textContent=`Skor Kelompok ${current} berhasil disimpan. Nilai: ${c.grade}/100.`});
+$('clearGroup').addEventListener('click',()=>{if(!confirm(`Hapus semua skor dan catatan Kelompok ${current}?`))return;groups[current]={scores:[0,0,0,0],notes:'',saved:false};renderForm();renderSummary()});
+$('clearAll').addEventListener('click',()=>{if(!confirm('Reset skor dan catatan semua kelompok?'))return;for(let i=1;i<=6;i++)groups[i]={scores:[0,0,0,0],notes:'',saved:false};current=1;renderForm();renderSummary();$('copyStatus').textContent='Rekap telah direset.'});
+function summaryText(){let lines=['REKAP RUBRIK PENILAIAN PROYEK IKLAN','Kelompok\\tImperatif\\tPersuasif\\tJujur & santun\\tKreativitas\\tTotal/16\\tNilai/100\\tStatus\\tCatatan'];for(let n=1;n<=6;n++){const g=groups[n],c=calc(g.scores);lines.push([`Kelompok ${n}`,...g.scores.map(v=>v||'-'),c.rated===4?c.total:'-',c.grade===null?'-':c.grade,g.saved?'Tersimpan':c.rated?'Belum disimpan':'Belum dinilai',g.notes||'-'].join('\\t'))}return lines.join('\\n')}
+$('copySummary').addEventListener('click',async()=>{const txt=summaryText();try{await navigator.clipboard.writeText(txt);$('copyStatus').textContent='Rekap berhasil disalin. Tempelkan ke dokumen atau spreadsheet.'}catch(e){const ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();$('copyStatus').textContent=ok?'Rekap berhasil disalin. Tempelkan ke dokumen atau spreadsheet.':'Penyalinan otomatis tidak tersedia pada browser ini.'}});
+$('print').addEventListener('click',()=>window.print());
+renderForm();renderSummary();
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refleksi 2 — Iklan Jujur dan Meyakinkan</title>
+<style>
+:root{--navy:#16324f;--blue:#2463a6;--sky:#eaf4ff;--green:#19734a;--red:#b42318;--gold:#ffd166;--ink:#172b3a;--muted:#526575;--line:#cfdae4}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#eaf4ff,#fff9eb);font-family:Arial,Helvetica,sans-serif;color:var(--ink);font-size:18px;line-height:1.5}
+header{background:var(--navy);color:white;padding:24px 18px;text-align:center}header h1{margin:0 0 8px;font-size:clamp(1.6rem,4vw,2.4rem)}header p{margin:0 auto;max-width:850px}
+main{max-width:1000px;margin:22px auto;padding:0 14px 32px}.card{background:white;border:2px solid var(--line);border-radius:18px;padding:clamp(16px,3vw,26px);margin:16px 0;box-shadow:0 5px 15px #16324f0b}
+h2{font-size:1.35rem;color:var(--navy);margin:0 0 14px}label{display:block;font-weight:700;margin:14px 0 7px}
+input[type=text],textarea{font:inherit;width:100%;border:2px solid #9eb2c4;border-radius:12px;padding:12px;background:#fff;color:var(--ink)}textarea{min-height:92px;resize:vertical}
+input:focus,textarea:focus,button:focus{outline:3px solid var(--gold);outline-offset:2px}.hint{color:var(--muted);font-size:.92rem;margin:6px 0}
+.slogans{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.slogan{display:flex;gap:10px;align-items:flex-start;border:2px solid var(--line);border-radius:12px;padding:12px;cursor:pointer;background:#fff}.slogan:has(input:checked){border-color:var(--blue);background:var(--sky)}.slogan input{width:22px;height:22px;flex-shrink:0;margin-top:4px}.slogan strong{display:block;color:var(--navy)}.slogan span{display:block}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}button{font:700 1rem Arial,sans-serif;border:0;border-radius:12px;padding:13px 18px;min-height:50px;cursor:pointer}.primary{background:var(--blue);color:#fff}.secondary{background:#e8eef5;color:var(--navy)}.success{background:var(--green);color:white}.danger{background:#fae8e6;color:var(--red)}
+.status-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:14px}.status{border:2px solid var(--line);border-radius:12px;padding:14px;background:#f8fafc}.status .symbol{font-size:1.5rem;margin-right:6px}.status strong{display:block;font-size:1.05rem}.status p{margin:7px 0 0;font-size:.94rem}.ok{border-color:#7bc6a2;background:#edfff5}.warn{border-color:#f0c46a;background:#fff8e8}.bad{border-color:#e6a09a;background:#fff1f0}#copyNotice{min-height:1.5em;color:var(--green);font-weight:700;margin-top:10px}
+footer{text-align:center;padding:8px 14px 28px;color:var(--muted);font-size:.9rem}@media(max-width:520px){body{font-size:17px}.actions button{width:100%}.card{border-radius:14px}}@media print{body{background:#fff;font-size:12pt}header{background:#fff;color:#000;border-bottom:2px solid #000}.card{box-shadow:none;break-inside:avoid}.actions,.hint.print-hide{display:none}main{max-width:none}}
+</style>
+</head>
+<body>
+<header><h1>🌱 Refleksi 2: Iklan Jujur dan Meyakinkan</h1><p>Renungkan pembelajaranmu, perbaiki satu slogan, lalu periksa apakah iklanmu menggunakan kalimat imperatif dan persuasif tanpa klaim berlebihan.</p></header>
+<main>
+<section class="card"><h2>1. Identitas (boleh diisi)</h2><label for="nama">Nama murid</label><input id="nama" type="text" placeholder="Tuliskan namamu"><label for="kelompok">Kelompok</label><input id="kelompok" type="text" placeholder="Contoh: Kelompok 3"></section>
+<section class="card"><h2>2. Pilih satu slogan berlebihan</h2><p class="hint">Pilih slogan yang ingin kamu perbaiki. Slogan-slogan ini sengaja dibuat sebagai contoh yang perlu dikritisi.</p>
+<div class="slogans">
+<label class="slogan"><input type="radio" name="slogan" value="Minuman kakao ini pasti membuatmu paling pintar di kelas!"><span><strong>A. Minuman kakao</strong>“Minuman kakao ini pasti membuatmu paling pintar di kelas!”</span></label>
+<label class="slogan"><input type="radio" name="slogan" value="Madu hutan kami menyembuhkan semua penyakit dalam sehari!"><span><strong>B. Madu hutan</strong>“Madu hutan kami menyembuhkan semua penyakit dalam sehari!”</span></label>
+<label class="slogan"><input type="radio" name="slogan" value="Keripik ikan ini adalah camilan terenak nomor satu di dunia!"><span><strong>C. Keripik ikan</strong>“Keripik ikan ini adalah camilan terenak nomor satu di dunia!”</span></label>
+<label class="slogan"><input type="radio" name="slogan" value="Kerajinan anyaman ini dijamin awet selamanya dan tidak akan rusak!"><span><strong>D. Kerajinan anyaman</strong>“Kerajinan anyaman ini dijamin awet selamanya dan tidak akan rusak!”</span></label>
+</div>
+<label for="revisi">Tulis ulang menjadi slogan yang jujur dan meyakinkan</label><textarea id="revisi" placeholder="Contoh: Nikmati kakao lokal dengan rasa khas. Yuk, coba dan dukung produk daerah kita!"></textarea><p class="hint">Tips: sampaikan manfaat yang masuk akal, gunakan ajakan yang sopan, dan hindari janji mutlak yang tidak dapat dibuktikan.</p></section>
+<section class="card"><h2>3. Pengecek otomatis</h2><p class="hint">Pengecek ini mencari beberapa kata atau pola umum. Hasilnya adalah petunjuk awal—tetap baca kembali kalimatmu karena makna kalimat tidak selalu dapat dinilai hanya dari kata tertentu.</p>
+<div class="status-grid" aria-live="polite">
+<div class="status" id="imperatifStatus"><strong><span class="symbol">🔎</span>Kalimat imperatif</strong><p id="imperatifText">Tulis revisi untuk memeriksa.</p></div>
+<div class="status" id="persuasifStatus"><strong><span class="symbol">💬</span>Kalimat persuasif</strong><p id="persuasifText">Tulis revisi untuk memeriksa.</p></div>
+<div class="status" id="klaimStatus"><strong><span class="symbol">⚖️</span>Klaim berlebihan</strong><p id="klaimText">Tulis revisi untuk memeriksa.</p></div></div><div class="actions"><button class="primary" id="checkBtn" type="button">Periksa ulang</button></div></section>
+<section class="card"><h2>4. Tiga pertanyaan refleksi</h2>
+<label for="r1">1. Apa yang kupelajari tentang kalimat iklan?</label><textarea id="r1" placeholder="Aku belajar bahwa..."></textarea>
+<label for="r2">2. Apa yang berbeda dari iklan sebelum dan sesudah diperbaiki?</label><textarea id="r2" placeholder="Sebelum diperbaiki..., sesudah diperbaiki..."></textarea>
+<label for="r3">3. Apa yang masih ingin kuperbaiki?</label><textarea id="r3" placeholder="Aku masih ingin berlatih..."></textarea>
+<div class="actions"><button class="success" id="copyBtn" type="button">Salin hasil</button><button class="secondary" id="printBtn" type="button">Cetak / Simpan PDF</button><button class="danger" id="resetBtn" type="button">Ulangi / Reset</button></div><p id="copyNotice" aria-live="polite"></p></section>
+</main><footer>Bahasa Indonesia • Kelas VIII • Gunakan bahasa yang santun, jujur, dan dapat dipertanggungjawabkan.</footer>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const impPatterns=[/\b(ayo|yuk|mari|silakan|tolong|coba|cobalah|nikmati|pilih|gunakan|kunjungi|rasakan|dukung|beli|jangan|hindari|datanglah|kenali|temukan)\b/i,/\b\w+lah\b/i];
+const perPatterns=[/\b(ayo|yuk|mari|cobalah|nikmati|dukung|pilih|rasakan|temukan|dapatkan)\b/i,/\b(karena|agar|supaya|sehingga|membantu|praktis|lezat|gurih|khas|nyaman|bermanfaat|pilihan|rasa)\b/i];
+const excessPatterns=[/\b(pasti|dijamin|selamanya|semua penyakit|dalam sehari|nomor satu|paling|terbaik|terhebat|100\s*%|tanpa gagal|tidak akan pernah|ajaib|langsung sembuh|menyembuhkan)\b/i,/\b(terkenal di seluruh dunia|tak tertandingi|paling sempurna)\b/i];
+function setStatus(boxId,textId,state,message){const box=$(boxId);box.classList.remove('ok','warn','bad');if(state)box.classList.add(state);$(textId).textContent=message}
+function check(){
+ const v=$('revisi').value.trim();
+ if(!v){setStatus('imperatifStatus','imperatifText','warn','Belum ada teks. Tulis slogan revisimu terlebih dahulu.');setStatus('persuasifStatus','persuasifText','warn','Belum ada teks. Tulis slogan revisimu terlebih dahulu.');setStatus('klaimStatus','klaimText','warn','Belum ada teks. Tulis slogan revisimu terlebih dahulu.');return {imp:false,per:false,excess:null}}
+ const imp=impPatterns.some(p=>p.test(v)),per=perPatterns.some(p=>p.test(v)),excess=excessPatterns.some(p=>p.test(v));
+ setStatus('imperatifStatus','imperatifText',imp?'ok':'warn',imp?'Terindikasi ada kata ajakan/perintah. Pastikan bentuknya sesuai maksud kalimat.':'Belum terdeteksi kata perintah/ajakan umum. Coba gunakan “Ayo”, “Yuk”, “Pilih”, atau “Nikmati”.');
+ setStatus('persuasifStatus','persuasifText',per?'ok':'warn',per?'Terindikasi ada kata ajakan atau alasan/manfaat. Pastikan kalimat benar-benar membujuk dengan wajar.':'Belum terdeteksi penanda persuasif umum. Tambahkan ajakan dan manfaat yang masuk akal.');
+ setStatus('klaimStatus','klaimText',excess?'bad':'ok',excess?'Ada kata/pola yang berpotensi berlebihan. Periksa apakah klaim dapat dibuktikan, lalu ganti dengan pernyataan yang lebih wajar.':'Tidak ditemukan kata berlebihan dari daftar pengecek. Tetap pastikan semua informasi benar dan dapat dipertanggungjawabkan.');
+ return {imp,per,excess}
+}
+$('checkBtn').addEventListener('click',check);$('revisi').addEventListener('input',check);
+function selected(){const e=document.querySelector('input[name="slogan"]:checked');return e?e.value:'(Belum memilih slogan)'}
+function buildResult(){const s=check();return ['REFLEKSI 2 — IKLAN JUJUR DAN MEYAKINKAN','Nama: '+($('nama').value.trim()||'(belum diisi)'),'Kelompok: '+($('kelompok').value.trim()||'(belum diisi)'),'','Slogan awal: '+selected(),'Slogan revisi: '+($('revisi').value.trim()||'(belum ditulis)'),'Pengecek otomatis:','- Imperatif: '+(s.imp?'terindikasi':'belum terindikasi'),'- Persuasif: '+(s.per?'terindikasi':'belum terindikasi'),'- Klaim berlebihan: '+(s.excess===null?'belum diperiksa':s.excess?'terindikasi':'tidak terdeteksi dari daftar kata'),'','1. Apa yang kupelajari tentang kalimat iklan?',$('r1').value.trim()||'(belum dijawab)','','2. Apa yang berbeda dari iklan sebelum dan sesudah diperbaiki?',$('r2').value.trim()||'(belum dijawab)','','3. Apa yang masih ingin kuperbaiki?',$('r3').value.trim()||'(belum dijawab)','','Catatan: hasil pengecek otomatis adalah petunjuk awal, bukan penilaian mutlak. Periksa kembali kebenaran klaim dan kesesuaian makna.'].join('\n')}
+$('copyBtn').addEventListener('click',async()=>{const t=buildResult();try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(t)}else{const e=document.createElement('textarea');e.value=t;e.style.position='fixed';e.style.opacity='0';document.body.appendChild(e);e.select();if(!document.execCommand('copy'))throw Error('copy');e.remove()}$('copyNotice').textContent='Hasil berhasil disalin. Tempelkan ke dokumen atau pesan untuk guru.'}catch(e){$('copyNotice').textContent='Penyalinan otomatis tidak tersedia. Coba gunakan Cetak / Simpan PDF.'}});
+$('printBtn').addEventListener('click',()=>window.print());
+$('resetBtn').addEventListener('click',()=>{if(!confirm('Hapus semua jawaban dan mulai lagi?'))return;$('nama').value='';$('kelompok').value='';$('revisi').value='';$('r1').value='';$('r2').value='';$('r3').value='';document.querySelectorAll('input[name="slogan"]').forEach(e=>e.checked=false);$('copyNotice').textContent='';check();window.scrollTo({top:0,behavior:'smooth'})});
+check();
+})();
+</script></body></html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Materi Interaktif: Kalimat Imperatif dan Persuasif</title>
+<style>
+:root{--navy:#152747;--blue:#2457a6;--teal:#087e75;--gold:#ffd166;--paper:#fffdf7;--ink:#202c40;--muted:#56657a;--line:#d4dfec;--soft:#edf4ff;--green:#19764c;--red:#a92a2a}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:var(--navy);color:var(--ink)}
+body{padding:clamp(8px,2vw,22px);display:flex;align-items:center;justify-content:center;min-height:100vh}
+button{font:inherit;cursor:pointer;touch-action:manipulation}button:focus-visible{outline:4px solid #f2a900;outline-offset:3px}
+.app{width:min(1450px,100%);height:min(940px,96vh);min-height:650px;background:var(--paper);border-radius:22px;box-shadow:0 20px 55px #0005;overflow:hidden;display:flex;flex-direction:column}
+header{background:var(--blue);color:#fff;padding:13px clamp(15px,3vw,32px);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{font-weight:900;font-size:clamp(.95rem,1.7vw,1.2rem)}.head-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pill{border:2px solid #ffffff80;background:#ffffff15;color:#fff;border-radius:999px;padding:8px 13px;font-size:clamp(.85rem,1.5vw,1rem);font-weight:800}
+.progress-area{height:7px;background:#dbe5f0}.progress{height:100%;width:12.5%;background:var(--gold);transition:width .25s}
+main{flex:1;min-height:0;display:flex;flex-direction:column}
+.slide{display:none;flex:1;min-height:0;overflow:auto;padding:clamp(18px,3.5vw,44px);gap:18px;flex-direction:column}
+.slide.active{display:flex}
+.kicker{font-size:clamp(.85rem,1.4vw,1rem);font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:var(--teal);margin:0}
+h1{font-size:clamp(2rem,5vw,4.2rem);line-height:1.06;margin:0;color:var(--navy)}
+h2{font-size:clamp(1.55rem,3vw,2.5rem);line-height:1.15;margin:0;color:var(--navy)}
+h3{font-size:clamp(1.15rem,2vw,1.45rem);margin:0 0 8px;color:var(--navy)}
+p,li{font-size:clamp(1rem,1.8vw,1.25rem);line-height:1.55}
+p{margin:0}.lead{font-size:clamp(1.12rem,2.1vw,1.5rem);max-width:1000px}
+.hero{border-radius:22px;padding:clamp(22px,4vw,44px);background:linear-gradient(130deg,#dff7f2,#e9f0ff);border:2px solid #d5e5ef;display:flex;flex-direction:column;gap:17px}
+.hero-icon{font-size:clamp(3rem,7vw,5.8rem);line-height:1}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{border:2px solid var(--line);border-radius:17px;padding:clamp(16px,2.5vw,25px);background:#fff}
+.card.tint{background:#edf7f4;border-color:#c9e7dd}.card.blue{background:#eff5ff;border-color:#d1def4}.card.gold{background:#fff6dd;border-color:#eedca7}
+ul{margin:8px 0 0;padding-left:1.3em}li+li{margin-top:5px}
+.key{display:inline-block;border:2px solid #a9bdd7;border-radius:10px;background:#f5f8ff;padding:5px 10px;margin:4px;font-weight:900;color:var(--navy);font-size:clamp(.95rem,1.7vw,1.2rem)}
+.keyword-row{display:flex;flex-wrap:wrap;gap:8px}
+.key-btn{border:2px solid #a8bfdc;background:#f5f8ff;color:var(--navy);border-radius:12px;padding:11px 15px;min-height:48px;font-weight:900;font-size:clamp(1rem,1.8vw,1.2rem)}
+.key-btn[aria-pressed="true"]{background:var(--gold);border-color:#a36b00;box-shadow:0 0 0 3px #ffd16655}
+.ad{background:#fff;border:3px dashed #b6c8de;border-radius:18px;padding:clamp(18px,3vw,30px);font-size:clamp(1.25rem,2.5vw,1.85rem);line-height:1.7;font-weight:800;color:var(--navy)}
+mark{background:var(--gold);color:#302300;border-radius:5px;padding:1px 3px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.note{border-left:6px solid var(--teal);background:#e9f7f4;padding:15px 18px;border-radius:0 12px 12px 0;font-size:clamp(1rem,1.7vw,1.2rem);line-height:1.5}
+table{width:100%;border-collapse:collapse;background:white;border-radius:14px;overflow:hidden;font-size:clamp(.95rem,1.6vw,1.15rem)}
+th,td{padding:clamp(10px,1.8vw,17px);border:1px solid #d7e1ed;text-align:left;vertical-align:top;line-height:1.45}
+th{background:var(--blue);color:white}
+.check{background:#f2f7ff;border:2px solid #ccdaed;border-radius:18px;padding:clamp(17px,2.7vw,27px);display:flex;flex-direction:column;gap:13px}
+.check .question{font-size:clamp(1.1rem,2vw,1.4rem);font-weight:900;line-height:1.4}
+.answers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.answer{background:white;border:2px solid #c6d4e7;color:var(--navy);border-radius:12px;min-height:55px;padding:12px;font-size:clamp(.98rem,1.7vw,1.15rem);font-weight:800}
+.answer:hover{border-color:var(--blue)}.answer:disabled{opacity:1}
+.answer.right{background:#e1f6e9;border-color:var(--green)}.answer.wrong{background:#fff0ee;border-color:var(--red)}
+.check-feedback{display:none;font-size:clamp(1rem,1.7vw,1.15rem);font-weight:700;line-height:1.45;padding:12px;border-radius:10px}.check-feedback.show{display:block}.check-feedback.ok{background:#e1f6e9}.check-feedback.no{background:#fff0ee}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px clamp(15px,3vw,32px);background:#edf2f8;border-top:1px solid #d8e1ec}
+.nav button{border-radius:12px;padding:12px 18px;min-height:50px;font-size:clamp(1rem,1.7vw,1.15rem);font-weight:900}
+.prev{background:white;border:2px solid #c3d1e2;color:var(--navy)}.next{background:var(--blue);border:2px solid var(--blue);color:white}.nav button:disabled{opacity:.35;cursor:not-allowed}
+.nav-center{font-weight:900;color:var(--muted);font-size:clamp(.9rem,1.5vw,1.05rem)}
+footer{text-align:center;padding:8px;background:#edf2f8;color:var(--muted);font-size:.82rem}
+@media(max-width:760px){.app{height:96vh;min-height:600px;border-radius:15px}.slide{padding:17px;gap:14px}.grid2{grid-template-columns:1fr}.answers{grid-template-columns:1fr}.nav{padding:10px;gap:7px}.nav button{padding:10px 12px;min-height:46px}.nav-center{font-size:.85rem}.head-right{width:100%;justify-content:space-between}table{font-size:.9rem}th,td{padding:8px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+<header>
+  <div class="brand">BAHASA INDONESIA • KELAS VIII</div>
+  <div class="head-right"><span class="pill">MATERI INTERAKTIF</span><button class="pill" id="fullBtn" type="button">⛶ Layar Penuh</button></div>
+</header>
+<div class="progress-area"><div class="progress" id="progress"></div></div>
+<main>
+<section class="slide active" data-title="Pembuka">
+  <div class="hero">
+    <div class="hero-icon" aria-hidden="true">📣📝</div>
+    <p class="kicker">Belajar memahami iklan</p>
+    <h1>Kalimat Imperatif dan Persuasif</h1>
+    <p class="lead">Kalimat dalam iklan tidak hanya memberi informasi. Kalimat juga dapat mengajak, meminta, melarang, atau membujuk pembaca agar tertarik pada suatu produk.</p>
+  </div>
+  <div class="grid2">
+    <div class="card tint"><h3>🎯 Tujuan belajar</h3><p>Membedakan kalimat imperatif dan persuasif serta menemukan kata kuncinya dalam iklan.</p></div>
+    <div class="card gold"><h3>👆 Cara menggunakan</h3><p>Geser layar dengan tombol <strong>Sebelumnya</strong> dan <strong>Berikutnya</strong>. Pada contoh iklan, sentuh kata kunci untuk menyorotnya.</p></div>
+  </div>
+  <div class="check" data-answer="b">
+    <p class="question">Cek pemahaman 1: Apa yang dapat dilakukan kalimat iklan?</p>
+    <div class="answers"><button class="answer" data-value="a">Hanya menyebut nama produk</button><button class="answer" data-value="b">Mengajak atau membujuk pembaca</button><button class="answer" data-value="c">Selalu menceritakan masa lalu</button></div>
+    <div class="check-feedback" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="slide" data-title="Kalimat imperatif">
+  <p class="kicker">Bagian 2 • Mengenali bentuk perintah</p><h2>Kalimat imperatif</h2>
+  <p class="lead"><strong>Kalimat imperatif</strong> adalah kalimat yang menyatakan perintah, larangan, ajakan, atau permintaan agar orang lain melakukan atau tidak melakukan sesuatu.</p>
+  <div class="grid2">
+    <div class="card blue"><h3>Empat bentuk umum</h3><ul><li><strong>Perintah:</strong> “Pilih produk sesuai kebutuhanmu!”</li><li><strong>Larangan:</strong> “Jangan buang sampah sembarangan!”</li><li><strong>Ajakan:</strong> “Ayo, gunakan tas pakai ulang!”</li><li><strong>Permintaan:</strong> “Silakan coba sampel kami.”</li></ul></div>
+    <div class="card"><h3>Ciri yang dapat dikenali</h3><ul><li>Menggunakan kata kerja tindakan, seperti <em>pilih</em> atau <em>gunakan</em>.</li><li>Dapat memakai kata <em>jangan</em>, <em>ayo</em>, <em>mari</em>, atau <em>silakan</em>.</li><li>Sering diakhiri tanda seru, tetapi tidak selalu.</li></ul></div>
+  </div>
+  <div class="note"><strong>Ingat:</strong> perhatikan maksud kalimatnya. Kalimat imperatif mengarahkan pembaca untuk melakukan atau menghindari suatu tindakan.</div>
+  <div class="check" data-answer="c"><p class="question">Cek pemahaman 2: Kalimat manakah yang merupakan larangan?</p><div class="answers"><button class="answer" data-value="a">Rasa manis menemani harimu.</button><button class="answer" data-value="b">Produk ini terasa ringan.</button><button class="answer" data-value="c">Jangan lupa membawa botol minum!</button></div><div class="check-feedback" aria-live="polite"></div></div>
+</section>
+
+<section class="slide" data-title="Kalimat persuasif">
+  <p class="kicker">Bagian 3 • Mengenali bujukan</p><h2>Kalimat persuasif</h2>
+  <p class="lead"><strong>Kalimat persuasif</strong> adalah kalimat yang bertujuan membujuk atau meyakinkan pembaca agar tertarik, percaya, atau bersedia melakukan sesuatu.</p>
+  <div class="grid2">
+    <div class="card tint"><h3>Tiga unsur yang sering muncul</h3><ul><li><strong>Alasan:</strong> penjelasan mengapa produk layak dipilih.</li><li><strong>Manfaat:</strong> hal baik yang ditawarkan produk.</li><li><strong>Bujukan:</strong> ungkapan yang mendorong pembaca untuk tertarik.</li></ul></div>
+    <div class="card gold"><h3>Contoh ungkapan</h3><p>“Dengan bahan pilihan, camilan ini cocok menemani waktu belajar.”</p><p style="margin-top:10px">Alasan/manfaat: <span class="key">bahan pilihan</span> dan <span class="key">menemani waktu belajar</span>.</p></div>
+  </div>
+  <div class="note"><strong>Ingat:</strong> kalimat persuasif berusaha meyakinkan pembaca. Bujukan yang baik harus didukung informasi yang masuk akal dan jujur.</div>
+  <div class="check" data-answer="a"><p class="question">Cek pemahaman 3: Kalimat manakah yang paling jelas membujuk dengan manfaat?</p><div class="answers"><button class="answer" data-value="a">Dengan serat alami, minuman ini cocok menemani sarapanmu.</button><button class="answer" data-value="b">Tutup pintu itu sekarang!</button><button class="answer" data-value="c">Rina membawa buku ke kelas.</button></div><div class="check-feedback" aria-live="polite"></div></div>
+</section>
+
+<section class="slide" data-title="Perbedaan">
+  <p class="kicker">Bagian 4 • Bandingkan cirinya</p><h2>Apa perbedaannya?</h2>
+  <p class="lead">Keduanya dapat muncul dalam iklan. Bedakan berdasarkan tujuan yang paling menonjol.</p>
+  <table>
+    <thead><tr><th>Aspek</th><th>Imperatif</th><th>Persuasif</th></tr></thead>
+    <tbody>
+      <tr><th>Tujuan utama</th><td>Mengarahkan tindakan: perintah, larangan, ajakan, atau permintaan.</td><td>Membujuk atau meyakinkan pembaca.</td></tr>
+      <tr><th>Kata/ungkapan</th><td>ayo, jangan, silakan, pilih, gunakan</td><td>karena, dengan, agar, lebih praktis, bermanfaat</td></tr>
+      <tr><th>Contoh</th><td>“Ayo, bawa tas belanja sendiri!”</td><td>“Tas ini ringan sehingga mudah dibawa.”</td></tr>
+      <tr><th>Pertanyaan kunci</th><td>Apakah pembaca diminta melakukan sesuatu?</td><td>Apakah pembaca dibujuk melalui alasan atau manfaat?</td></tr>
+    </tbody>
+  </table>
+  <div class="note"><strong>Catatan penting:</strong> satu kalimat dapat memiliki kedua fungsi. Contoh “Ayo, pilih tas yang ringan agar mudah dibawa!” berisi ajakan sekaligus alasan/manfaat.</div>
+  <div class="check" data-answer="b"><p class="question">Cek pemahaman 4: Apa tujuan utama kalimat persuasif?</p><div class="answers"><button class="answer" data-value="a">Menyampaikan perintah saja</button><button class="answer" data-value="b">Membujuk atau meyakinkan pembaca</button><button class="answer" data-value="c">Menceritakan kejadian secara berurutan</button></div><div class="check-feedback" aria-live="polite"></div></div>
+</section>
+
+<section class="slide" data-title="Contoh iklan 1">
+  <p class="kicker">Bagian 5 • Praktik sorot kata kunci</p><h2>Contoh iklan 1: Minuman sari buah “Rimbun”</h2>
+  <p class="lead">Sentuh kata kunci di bawah. Kata tersebut akan disorot di dalam contoh iklan.</p>
+  <div class="ad" data-ad="ad1">“<span data-word="ayo">Ayo</span>, segarkan harimu dengan sari buah Rimbun. Rasakan rasa buah yang menyenangkan!”</div>
+  <div class="keyword-row" data-target="ad1"><button class="key-btn" data-key="ayo" aria-pressed="false">ayo</button><button class="key-btn" data-key="dengan" aria-pressed="false">dengan</button></div>
+  <div class="grid2"><div class="card blue"><h3>Kata “ayo”</h3><p>Menandai ajakan langsung. Ini ciri kalimat imperatif.</p></div><div class="card tint"><h3>Kata “dengan”</h3><p>Memperkenalkan produk atau cara yang ditawarkan. Perhatikan manfaat dalam kalimat untuk melihat daya persuasifnya.</p></div></div>
+  <div class="check" data-answer="a"><p class="question">Cek pemahaman 5: Kata “Ayo” pada iklan tersebut terutama menandai …</p><div class="answers"><button class="answer" data-value="a">Ajakan atau imperatif</button><button class="answer" data-value="b">Kalimat berita biasa</button><button class="answer" data-value="c">Kalimat larangan</button></div><div class="check-feedback" aria-live="polite"></div></div>
+</section>
+
+<section class="slide" data-title="Contoh iklan 2">
+  <p class="kicker">Bagian 6 • Praktik sorot kata kunci</p><h2>Contoh iklan 2: Tas pakai ulang “Lestari”</h2>
+  <p class="lead">Sentuh kata kunci untuk melihatnya disorot. Amati bagaimana larangan atau ajakan dapat dipadukan dengan manfaat.</p>
+  <div class="ad" data-ad="ad2">“<span data-word="jangan">Jangan</span> gunakan kantong sekali pakai terus-menerus. <span data-word="yuk">Yuk</span>, bawa tas Lestari agar belanja lebih praktis!”</div>
+  <div class="keyword-row" data-target="ad2"><button class="key-btn" data-key="jangan" aria-pressed="false">jangan</button><button class="key-btn" data-key="yuk" aria-pressed="false">yuk</button><button class="key-btn" data-key="agar" aria-pressed="false">agar</button></div>
+  <div class="grid2"><div class="card gold"><h3>“Jangan” dan “yuk”</h3><p>“Jangan” menandai larangan; “yuk” menandai ajakan. Keduanya merupakan penanda imperatif.</p></div><div class="card tint"><h3>“Agar”</h3><p>Menunjukkan tujuan atau manfaat yang ingin dicapai, sehingga mendukung alasan persuasif.</p></div></div>
+  <div class="check" data-answer="c"><p class="question">Cek pemahaman 6: Kata “agar” pada slogan membantu menyampaikan …</p><div class="answers"><button class="answer" data-value="a">Larangan langsung</button><button class="answer" data-value="b">Nama orang yang berbicara</button><button class="answer" data-value="c">Tujuan atau manfaat</button></div><div class="check-feedback" aria-live="polite"></div></div>
+</section>
+
+<section class="slide" data-title="Contoh iklan 3">
+  <p class="kicker">Bagian 7 • Praktik sorot kata kunci</p><h2>Contoh iklan 3: Camilan pisang “Pesisir”</h2>
+  <p class="lead">Sentuh kata kunci untuk menyorotnya. Perhatikan bahwa sebuah iklan dapat mengajak sekaligus menyebutkan manfaat.</p>
+  <div class="ad" data-ad="ad3">“<span data-word="cobalah">Cobalah</span> camilan pisang Pesisir. <span data-word="dengan">Dengan</span> pisang pilihan, camilan ini cocok menemani waktu santaimu. <span data-word="yuk">Yuk</span>, nikmati bersama keluarga!”</div>
+  <div class="keyword-row" data-target="ad3"><button class="key-btn" data-key="cobalah" aria-pressed="false">cobalah</button><button class="key-btn" data-key="dengan" aria-pressed="false">dengan</button><button class="key-btn" data-key="yuk" aria-pressed="false">yuk</button></div>
+  <div class="grid2"><div class="card blue"><h3>“Cobalah” dan “yuk”</h3><p>Memberi dorongan untuk mencoba atau menikmati produk. Keduanya merupakan ajakan imperatif.</p></div><div class="card tint"><h3>“Dengan”</h3><p>Memperkenalkan alasan atau ciri produk, yaitu penggunaan pisang pilihan, untuk mendukung bujukan.</p></div></div>
+  <div class="check" data-answer="b"><p class="question">Cek pemahaman 7: Apa fungsi kata “Cobalah” pada iklan tersebut?</p><div class="answers"><button class="answer" data-value="a">Menjelaskan waktu kejadian</button><button class="answer" data-value="b">Mengajak pembaca mencoba produk</button><button class="answer" data-value="c">Menyatakan larangan</button></div><div class="check-feedback" aria-live="polite"></div></div>
+</section>
+
+<section class="slide" data-title="Iklan jujur dan penutup">
+  <p class="kicker">Bagian 8 • Menulis iklan yang bertanggung jawab</p><h2>Persuasif, tetapi tetap jujur</h2>
+  <div class="grid2">
+    <div class="card tint"><h3>✅ Lakukan</h3><ul><li>Sampaikan manfaat yang masuk akal dan dapat dijelaskan.</li><li>Gunakan kata-kata yang jelas dan santun.</li><li>Pastikan informasi sesuai dengan keadaan produk.</li><li>Ajak pembaca tanpa merendahkan pilihan orang lain.</li></ul></div>
+    <div class="card gold"><h3>⚠️ Hindari</h3><ul><li>Klaim berlebihan seperti “pasti menyembuhkan semua penyakit”.</li><li>Janji yang tidak dapat dibuktikan.</li><li>Informasi harga atau kualitas yang menyesatkan.</li><li>Menakut-nakuti atau memaksa pembaca.</li></ul></div>
+  </div>
+  <div class="note"><strong>Tips menulis:</strong> sebutkan produk, pilih kata ajakan yang sesuai, jelaskan manfaat yang wajar, lalu periksa kembali apakah semua klaim benar.</div>
+  <div class="check" data-answer="a"><p class="question">Cek pemahaman 8: Iklan manakah yang lebih jujur dan bertanggung jawab?</p><div class="answers"><button class="answer" data-value="a">“Tas ringan dan mudah dilipat untuk belanja harian.”</button><button class="answer" data-value="b">“Tas ini pasti membuat semua masalah hilang!”</button><button class="answer" data-value="c">“Beli sekarang, kalau tidak hidupmu akan rugi!”</button></div><div class="check-feedback" aria-live="polite"></div></div>
+  <div class="hero"><h3>Siap membuat iklanmu sendiri?</h3><p class="lead">Dalam proyek kelompok, buat slogan untuk produk lokal atau produk fiktif. Gunakan kalimat imperatif atau persuasif, dan pastikan pesan iklan tetap jujur.</p><button class="next" style="align-self:flex-start;border-radius:12px;padding:13px 20px;font-weight:900;font-size:1.1rem" id="resetAll">↻ Ulangi materi</button></div>
+</section>
+</main>
+<nav class="nav" aria-label="Navigasi materi">
+  <button class="prev" id="prevBtn" disabled>← Sebelumnya</button>
+  <span class="nav-center" id="slideCount">Layar 1 dari 8</span>
+  <button class="next" id="nextBtn">Berikutnya →</button>
+</nav>
+<footer>Materi Bahasa Indonesia • Fase D • SMP Negeri 8 Kolaka Utara</footer>
+</div>
+<script>
+(() => {
+ const slides=[...document.querySelectorAll(".slide")];let current=0;
+ const $=id=>document.getElementById(id);
+ function render(){slides.forEach((s,i)=>s.classList.toggle("active",i===current));$("slideCount").textContent=`Layar ${current+1} dari ${slides.length}`;$("prevBtn").disabled=current===0;$("nextBtn").disabled=current===slides.length-1;$("nextBtn").textContent=current===slides.length-1?"Layar terakhir":"Berikutnya →";$("progress").style.width=((current+1)/slides.length*100)+"%";}
+ $("prevBtn").addEventListener("click",()=>{if(current>0){current--;render();}});
+ $("nextBtn").addEventListener("click",()=>{if(current<slides.length-1){current++;render();}});
+ document.querySelectorAll(".keyword-row").forEach(row=>{
+   row.querySelectorAll(".key-btn").forEach(btn=>btn.addEventListener("click",()=>{
+     const target=row.dataset.target,word=btn.dataset.key,ad=document.querySelector(`[data-ad="${target}"]`);
+     const was=btn.getAttribute("aria-pressed")==="true";
+     row.querySelectorAll(".key-btn").forEach(b=>b.setAttribute("aria-pressed","false"));
+     ad.querySelectorAll("[data-word]").forEach(span=>{const txt=span.textContent;span.replaceWith(document.createTextNode(txt));});
+     if(!was){
+       btn.setAttribute("aria-pressed","true");
+       // Rebuild word spans only for the exact keyword chosen, preserving the advertisement text.
+       const spans=[...ad.childNodes];
+       spans.forEach(node=>{
+         if(node.nodeType===Node.TEXT_NODE){
+           const text=node.textContent;
+           const escaped=word.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+           const regex=new RegExp(`(${escaped})`,"gi");
+           if(regex.test(text)){
+             const frag=document.createDocumentFragment();let last=0;regex.lastIndex=0;let match;
+             while((match=regex.exec(text))!==null){frag.append(document.createTextNode(text.slice(last,match.index)));const mark=document.createElement("mark");mark.textContent=match[0];frag.append(mark);last=match.index+match[0].length;}
+             frag.append(document.createTextNode(text.slice(last)));node.replaceWith(frag);
+           }
+         } else if(node.nodeType===Node.ELEMENT_NODE&&node.matches("[data-word]")){
+           if(node.textContent.toLowerCase()===word.toLowerCase()){const mark=document.createElement("mark");mark.textContent=node.textContent;node.replaceWith(mark);}
+         }
+       });
+     }
+   }));
+ });
+ document.querySelectorAll(".check").forEach(box=>{
+   const correct=box.dataset.answer,feedback=box.querySelector(".check-feedback");
+   box.querySelectorAll(".answer").forEach(btn=>btn.addEventListener("click",()=>{
+     if(box.dataset.done==="true")return;box.dataset.done="true";
+     const ok=btn.dataset.value===correct;
+     box.querySelectorAll(".answer").forEach(b=>{b.disabled=true;if(b===btn)b.classList.add(ok?"right":"wrong");});
+     feedback.className="check-feedback show "+(ok?"ok":"no");
+     feedback.textContent=ok?"Tepat! Kamu memahami inti bagian ini.":"Belum tepat. Baca kembali penjelasan pada layar ini, lalu diskusikan alasannya bersama teman.";
+   }));
+ });
+ $("resetAll").addEventListener("click",()=>{
+   current=0;
+   document.querySelectorAll(".check").forEach(box=>{delete box.dataset.done;box.querySelectorAll(".answer").forEach(b=>{b.disabled=false;b.classList.remove("right","wrong");});const f=box.querySelector(".check-feedback");f.className="check-feedback";f.textContent="";});
+   document.querySelectorAll(".keyword-row").forEach(row=>{row.querySelectorAll(".key-btn").forEach(b=>b.setAttribute("aria-pressed","false"));const ad=document.querySelector(`[data-ad="${row.dataset.target}"]`);ad.querySelectorAll("mark").forEach(m=>m.replaceWith(document.createTextNode(m.textContent)));});
+   render();slides[0].scrollTop=0;
+ });
+ async function fullscreen(){try{if(!document.fullscreenElement)await $("app").requestFullscreen();else await document.exitFullscreen();}catch(e){alert("Layar penuh tidak tersedia pada peramban ini. Materi tetap dapat digunakan.");}}
+ $("fullBtn").addEventListener("click",fullscreen);
+ document.addEventListener("keydown",e=>{if(e.key==="ArrowRight"&&current<slides.length-1){current++;render();}if(e.key==="ArrowLeft"&&current>0){current--;render();}});
+ render();
+})();
+</script>
+</body>
+</html>

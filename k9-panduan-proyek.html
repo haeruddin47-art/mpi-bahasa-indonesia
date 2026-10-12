@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panduan Proyek Pembuatan Iklan</title>
+<style>
+:root{--navy:#16324f;--blue:#1769aa;--teal:#087e72;--gold:#ffd166;--ink:#1b2d3d;--muted:#53697b;--bg:#f2f7fb;--line:#c9d8e5;--white:#fff;--pale:#e8f4ff;--green:#e4f7ed;--red:#a92c39}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);font-size:18px;line-height:1.5}button,input,textarea,select{font:inherit}button{border:0;border-radius:13px;padding:12px 17px;min-height:48px;font-weight:700;cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:4px solid var(--gold);outline-offset:3px}
+header{background:var(--navy);color:white;padding:24px clamp(16px,4vw,42px)}.eyebrow{text-transform:uppercase;letter-spacing:.08em;color:#bfe5ff;font-size:.85rem;font-weight:800}h1{font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.12;margin:7px 0 10px}header p{max-width:850px;margin:0;color:#e6f4ff}
+main{max-width:1160px;margin:auto;padding:22px clamp(12px,3vw,28px) 38px}.topline{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:18px}.tag{background:#dceefa;color:var(--navy);border-radius:99px;padding:7px 12px;font-size:.9rem;font-weight:800}
+.timer{background:#fff;border:2px solid var(--line);border-radius:18px;padding:14px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}.timer strong{font-size:clamp(1.8rem,5vw,2.6rem);font-variant-numeric:tabular-nums;color:var(--navy);min-width:145px}.timer.warning strong{color:var(--red)}.timer-label{font-size:.9rem;color:var(--muted);font-weight:700}.timer-controls{display:flex;gap:8px;flex-wrap:wrap}.primary{background:var(--blue);color:#fff}.secondary{background:#e3edf5;color:var(--navy)}.teal{background:var(--teal);color:#fff}.gold{background:var(--gold);color:#3b2b00}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{background:var(--white);border:2px solid var(--line);border-radius:20px;padding:clamp(16px,2.5vw,24px);margin-bottom:16px;box-shadow:0 6px 20px #15324a0a}.card h2{font-size:clamp(1.3rem,3vw,1.75rem);color:var(--navy);margin:0 0 10px}.card h3{font-size:1.08rem;color:var(--navy);margin:16px 0 6px}.lead{color:var(--muted);margin:0 0 14px}.steps{list-style:none;padding:0;margin:0;display:grid;gap:12px}.steps li{display:grid;grid-template-columns:46px 1fr;gap:12px;align-items:start}.num{background:var(--blue);color:#fff;width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:1.2rem;font-weight:900}.steps strong{display:block;color:var(--navy)}.steps p{margin:3px 0 0;color:var(--muted)}
+.tip-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.tip{border-radius:15px;background:var(--pale);padding:14px}.tip .symbol{font-size:1.7rem}.tip strong{display:block;color:var(--navy)}.tip p{margin:4px 0 0;font-size:.95rem}
+.choice-row{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}.format{flex:1;min-width:220px;text-align:left;background:#f7fafc;border:2px solid var(--line);color:var(--ink)}.format.active{border-color:var(--blue);background:#e4f3ff;box-shadow:0 0 0 2px #1769aa1a}.format small{display:block;color:var(--muted);font-weight:400;margin-top:4px}
+.template{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{background:#f7fafc;border:1px solid var(--line);border-radius:14px;padding:12px}.field strong{display:block;color:var(--navy);margin-bottom:4px}.field p{margin:0;color:var(--muted);font-size:.95rem}.field.full{grid-column:1/-1}.fill{width:100%;border:2px solid #b7c8d6;border-radius:11px;padding:10px;background:#fff;margin-top:7px;min-height:48px}
+.checklist{display:grid;gap:10px}.check-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:#fbfdff}.check-row p{margin:0}.status{display:flex;gap:6px;flex-wrap:wrap}.status button{min-width:82px;padding:9px 12px;min-height:44px;background:#e6edf3;color:var(--navy);border:2px solid transparent}.status button.active.yes{background:#d9f5e6;color:#075c43;border-color:var(--teal)}.status button.active.no{background:#fff0d1;color:#6c4700;border-color:#c58b15}.check-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px}.progress{height:12px;background:#dce6ed;border-radius:99px;overflow:hidden;flex:1;min-width:130px}.progress span{display:block;height:100%;width:0;background:var(--teal);transition:width .2s}.result{background:var(--green);border-left:6px solid var(--teal);padding:14px;border-radius:12px;margin-top:14px}.result p{margin:4px 0}.muted{color:var(--muted)}.footer{text-align:center;color:var(--muted);font-size:.9rem;padding:6px 0 0}.hidden{display:none!important}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.tip-grid{grid-template-columns:1fr}.template{grid-template-columns:1fr}.field.full{grid-column:auto}.check-row{grid-template-columns:1fr}.timer{align-items:flex-start}.timer strong{min-width:130px}.timer-controls button{flex:1}}
+@media print{body{background:white;font-size:12pt}header{background:white;color:#111;padding:10px}header p,.timer-controls,.format,.footer{display:none!important}.card{box-shadow:none;break-inside:avoid}.grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">Bahasa Indonesia • Kelas VIII • Proyek kelompok</div>
+  <h1>Panduan Proyek: Buat Iklan yang Menarik dan Jujur</h1>
+  <p>Pilih membuat poster atau rekaman suara 30 detik. Bekerja sama, gunakan kalimat imperatif dan persuasif, lalu periksa karya sebelum dipresentasikan.</p>
+</header>
+<main>
+  <div class="topline">
+    <span class="tag">5 langkah kerja • Formatif 2</span>
+    <section class="timer" id="timerBox" aria-label="Penghitung waktu kelas">
+      <div><div class="timer-label">WAKTU KERJA KELOMPOK</div><strong id="timeDisplay" aria-live="off">30:00</strong></div>
+      <div class="timer-controls">
+        <button class="primary" id="startPause">Mulai</button>
+        <button class="secondary" id="resetTimer">Atur ulang 30 menit</button>
+      </div>
+      <div class="timer-label" id="timerMessage" aria-live="polite">Siapkan ide, lalu tekan Mulai.</div>
+    </section>
+  </div>
+
+  <section class="card">
+    <h2>1. Lima langkah kerja</h2>
+    <p class="lead">Bagikan peran agar semua anggota berkontribusi. Sesuaikan pembagian tugas dengan jumlah anggota kelompok.</p>
+    <ol class="steps">
+      <li><span class="num">1</span><div><strong>Pilih produk dan sasaran</strong><p>Pilih produk lokal atau produk fiktif. Tentukan siapa yang ingin diajak mengenal atau membeli produk tersebut.</p></div></li>
+      <li><span class="num">2</span><div><strong>Rancang pesan iklan</strong><p>Tulis slogan singkat, satu kalimat imperatif, satu kalimat persuasif beserta alasan atau manfaat yang masuk akal.</p></div></li>
+      <li><span class="num">3</span><div><strong>Buat karya</strong><p>Susun poster atau rekam suara berdurasi 30 detik. Pastikan pesan mudah dipahami dan tidak berlebihan.</p></div></li>
+      <li><span class="num">4</span><div><strong>Periksa dan revisi</strong><p>Gunakan daftar periksa Formatif 2. Perbaiki kata yang membingungkan, klaim tanpa bukti, atau ajakan yang kurang sopan.</p></div></li>
+      <li><span class="num">5</span><div><strong>Presentasikan karya</strong><p>Tunjukkan poster atau putar rekaman. Jelaskan pilihan kalimat imperatif dan persuasif yang digunakan.</p></div></li>
+    </ol>
+  </section>
+
+  <div class="grid">
+    <section class="card">
+      <h2>2. Tips desain poster</h2>
+      <p class="lead">Tampilan sederhana membantu pembaca menangkap pesan dengan cepat.</p>
+      <div class="tip-grid">
+        <div class="tip"><div class="symbol">🎨</div><strong>Warna</strong><p>Gunakan 2–3 warna yang serasi. Pastikan teks kontras dengan latar.</p></div>
+        <div class="tip"><div class="symbol">🔠</div><strong>Huruf</strong><p>Pilih huruf yang jelas dan cukup besar. Batasi jenis huruf, hindari hiasan berlebihan.</p></div>
+        <div class="tip"><div class="symbol">🧩</div><strong>Tata letak</strong><p>Letakkan slogan paling menonjol, gambar pendukung di dekatnya, lalu ajakan akhir.</p></div>
+      </div>
+      <h3>Jika memilih rekaman suara 30 detik</h3>
+      <ul>
+        <li>Ucapkan kata dengan jelas, tidak terlalu cepat.</li>
+        <li>Gunakan urutan pesan yang runtut dan volume yang nyaman.</li>
+        <li>Latihan sekali sebelum merekam; musik latar tidak boleh menutupi suara.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <h2>3. Kerangka isi iklan</h2>
+      <p class="lead">Lengkapi empat bagian ini sebelum menyelesaikan karya.</p>
+      <div class="template">
+        <div class="field"><strong>1. Slogan</strong><p>Singkat, mudah diingat, dan sesuai produk.</p><input class="fill" id="sloganInput" placeholder="Contoh: Renyahnya teman ceria"></div>
+        <div class="field"><strong>2. Kalimat imperatif</strong><p>Ajakan, perintah, atau larangan yang sopan.</p><input class="fill" id="imperatifInput" placeholder="Contoh: Cobalah keripik pisang kami!"></div>
+        <div class="field"><strong>3. Kalimat persuasif</strong><p>Alasan atau manfaat yang masuk akal.</p><input class="fill" id="persuasifInput" placeholder="Contoh: Cocok untuk teman bersantai."></div>
+        <div class="field"><strong>4. Ajakan akhir</strong><p>Ajak pembaca bertindak tanpa memaksa.</p><input class="fill" id="akhirInput" placeholder="Contoh: Yuk, kenali produk lokal!"></div>
+        <div class="field full"><strong>Format karya</strong>
+          <div class="choice-row">
+            <button type="button" class="format active" data-format="poster">🖼️ Poster<small>Judul, gambar, pesan, dan ajakan akhir.</small></button>
+            <button type="button" class="format" data-format="audio">🎙️ Rekaman suara 30 detik<small>Naskah ringkas, suara jelas, dan penutup.</small></button>
+          </div>
+          <p class="muted" id="formatTip">Tips poster: pastikan slogan terbaca dari jarak jauh.</p>
+        </div>
+      </div>
+      <div class="check-foot"><button class="secondary" id="copyDraft">Salin kerangka iklan</button><span class="muted" id="copyStatus" aria-live="polite">Isi bagian di atas sebagai rancangan kelompok.</span></div>
+    </section>
+  </div>
+
+  <section class="card">
+    <h2>4. Daftar periksa Formatif 2</h2>
+    <p class="lead">Diskusikan setiap pernyataan. Pilih <strong>Ya</strong> jika sudah terpenuhi atau <strong>Belum</strong> jika perlu diperbaiki.</p>
+    <div class="checklist" id="checklist">
+      <div class="check-row" data-item="0"><p><strong>1.</strong> Iklan memiliki slogan yang singkat dan sesuai dengan produk.</p><div class="status"><button data-value="Ya">Ya</button><button data-value="Belum">Belum</button></div></div>
+      <div class="check-row" data-item="1"><p><strong>2.</strong> Ada kalimat imperatif yang jelas dan santun.</p><div class="status"><button data-value="Ya">Ya</button><button data-value="Belum">Belum</button></div></div>
+      <div class="check-row" data-item="2"><p><strong>3.</strong> Ada kalimat persuasif dengan alasan atau manfaat yang masuk akal.</p><div class="status"><button data-value="Ya">Ya</button><button data-value="Belum">Belum</button></div></div>
+      <div class="check-row" data-item="3"><p><strong>4.</strong> Ajakan akhir mudah dipahami dan tidak memaksa.</p><div class="status"><button data-value="Ya">Ya</button><button data-value="Belum">Belum</button></div></div>
+      <div class="check-row" data-item="4"><p><strong>5.</strong> Tidak ada klaim berlebihan atau janji yang tidak bisa dibuktikan.</p><div class="status"><button data-value="Ya">Ya</button><button data-value="Belum">Belum</button></div></div>
+      <div class="check-row" data-item="5"><p><strong>6.</strong> Poster mudah dibaca atau rekaman suara berdurasi sekitar 30 detik dan terdengar jelas.</p><div class="status"><button data-value="Ya">Ya</button><button data-value="Belum">Belum</button></div></div>
+    </div>
+    <div class="check-foot">
+      <div class="progress" aria-label="Jumlah periksa selesai"><span id="checkProgress"></span></div>
+      <strong id="checkCount">0 dari 6 diperiksa</strong>
+      <button class="secondary" id="resetChecks">Reset daftar periksa</button>
+    </div>
+    <div class="result hidden" id="checkResult" aria-live="polite"><strong id="resultTitle"></strong><p id="resultText"></p></div>
+  </section>
+  <section class="card">
+    <h2>5. Penutup: siap presentasi?</h2>
+    <p>Setelah daftar periksa selesai, pastikan kelompok siap menunjukkan karya dan menjelaskan dua jenis kalimat yang digunakan.</p>
+    <div class="actions"><button class="primary" id="printPage">Cetak panduan</button><button class="secondary" id="resetAll">Ulangi / reset semua</button></div>
+  </section>
+  <p class="footer">Ingat: iklan yang baik menarik perhatian, menyampaikan manfaat dengan jelas, dan tetap jujur.</p>
+</main>
+<script>
+const display=document.getElementById('timeDisplay'),timerBox=document.getElementById('timerBox'),startPause=document.getElementById('startPause'),timerMessage=document.getElementById('timerMessage');
+let remaining=1800, interval=null, running=false;
+function drawTimer(){const m=Math.floor(remaining/60),s=remaining%60;display.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');timerBox.classList.toggle('warning',remaining<=300);if(remaining===0){timerMessage.textContent='Waktu selesai! Lakukan pemeriksaan akhir.';startPause.textContent='Selesai';startPause.disabled=true;}else if(remaining<=300){timerMessage.textContent='Lima menit terakhir: periksa dan rapikan karya.'}else if(running){timerMessage.textContent='Waktu berjalan. Tetap bekerja sama.'} }
+function pauseTimer(){if(interval!==null){clearInterval(interval);interval=null}running=false;startPause.textContent='Lanjutkan';drawTimer()}
+startPause.addEventListener('click',()=>{if(remaining===0)return;if(running){pauseTimer();timerMessage.textContent='Penghitung waktu dijeda.'}else{running=true;startPause.textContent='Jeda';interval=setInterval(()=>{remaining=Math.max(0,remaining-1);drawTimer();if(remaining===0){clearInterval(interval);interval=null;running=false;startPause.disabled=true;startPause.textContent='Selesai'}},1000);drawTimer()}});
+document.getElementById('resetTimer').addEventListener('click',()=>{if(interval!==null)clearInterval(interval);interval=null;remaining=1800;running=false;startPause.disabled=false;startPause.textContent='Mulai';drawTimer();timerMessage.textContent='Penghitung waktu kembali ke 30 menit.'});
+let selectedFormat='poster';document.querySelectorAll('.format').forEach(btn=>btn.addEventListener('click',()=>{selectedFormat=btn.dataset.format;document.querySelectorAll('.format').forEach(b=>b.classList.toggle('active',b===btn));document.getElementById('formatTip').textContent=selectedFormat==='poster'?'Tips poster: pastikan slogan terbaca dari jarak jauh.':'Tips audio: susun kalimat singkat, berlatih, lalu rekam sekitar 30 detik.'}));
+const statuses=Array(6).fill('');
+function updateChecks(){let done=statuses.filter(Boolean).length,yes=statuses.filter(v=>v==='Ya').length;document.getElementById('checkCount').textContent=`${done} dari 6 diperiksa`;document.getElementById('checkProgress').style.width=(done/6*100)+'%';const result=document.getElementById('checkResult');result.classList.toggle('hidden',done===0);if(done){document.getElementById('resultTitle').textContent=done===6&&yes===6?'Siap dipresentasikan!':done===6?'Pemeriksaan selesai—revisi bagian yang bertanda Belum.':'Terus periksa karya kelompok.';document.getElementById('resultText').textContent=done===6?`${yes} butir berstatus Ya. ${yes===6?'Semua kriteria terpenuhi.':'Perbaiki butir yang berstatus Belum sebelum presentasi.'}`:`Sudah memeriksa ${done} butir. Diskusikan butir yang masih Belum, lalu perbaiki karya.`;}}
+document.querySelectorAll('.check-row button').forEach(btn=>btn.addEventListener('click',()=>{const row=btn.closest('.check-row'),i=Number(row.dataset.item),value=btn.dataset.value;statuses[i]=value;row.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b===btn));row.querySelectorAll('button').forEach(b=>{b.classList.remove('yes','no');if(b===btn)b.classList.add(value==='Ya'?'yes':'no')});updateChecks()}));
+document.getElementById('resetChecks').addEventListener('click',()=>{statuses.fill('');document.querySelectorAll('.check-row button').forEach(b=>b.classList.remove('active','yes','no'));updateChecks()});
+function draftText(){return `RANCANGAN IKLAN KELOMPOK\nFormat: ${selectedFormat==='poster'?'Poster':'Rekaman suara 30 detik'}\nSlogan: ${document.getElementById('sloganInput').value.trim()||'(belum diisi)'}\nKalimat imperatif: ${document.getElementById('imperatifInput').value.trim()||'(belum diisi)'}\nKalimat persuasif: ${document.getElementById('persuasifInput').value.trim()||'(belum diisi)'}\nAjakan akhir: ${document.getElementById('akhirInput').value.trim()||'(belum diisi)'}`}
+document.getElementById('copyDraft').addEventListener('click',async()=>{const txt=draftText(),status=document.getElementById('copyStatus');try{await navigator.clipboard.writeText(txt);status.textContent='Kerangka iklan berhasil disalin.'}catch(e){const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();status.textContent=ok?'Kerangka iklan berhasil disalin.':'Penyalinan otomatis tidak tersedia. Salin teks dari kolom kerangka.'}});
+document.getElementById('printPage').addEventListener('click',()=>window.print());
+document.getElementById('resetAll').addEventListener('click',()=>{if(!confirm('Reset semua isian, daftar periksa, dan timer?'))return;document.querySelectorAll('.template input').forEach(i=>i.value='');document.querySelector('[data-format="poster"]').click();document.getElementById('resetChecks').click();document.getElementById('resetTimer').click();document.getElementById('copyStatus').textContent='Isi bagian di atas sebagai rancangan kelompok.';window.scrollTo({top:0,behavior:'smooth'})});
+drawTimer();updateChecks();
+</script>
+</body>
+</html>

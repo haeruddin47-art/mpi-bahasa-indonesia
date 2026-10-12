@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>K7 — Adu Cepat Kalimat Iklan</title>
+<style>
+:root{--navy:#102a43;--blue:#1d4ed8;--teal:#0f766e;--orange:#ea580c;--paper:#f8fafc;--line:#cbd5e1;--green:#dcfce7;--red:#fee2e2;--gold:#fef3c7}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--navy);background:linear-gradient(135deg,#dbeafe,#f8fafc 48%,#ccfbf1);font-size:18px;line-height:1.4}
+main{max-width:1100px;margin:auto;padding:14px}.panel{background:white;border:2px solid #dbeafe;border-radius:22px;padding:clamp(16px,3vw,28px);margin:12px 0;box-shadow:0 8px 24px #0f172a0d}
+.hero{background:#102a43;color:#fff;border-radius:20px;padding:clamp(20px,4vw,32px)}.hero p{color:#e2e8f0}.tag{display:inline-block;background:#ccfbf1;color:#134e4a;border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:800}
+h1{font-size:clamp(1.8rem,5vw,3rem);line-height:1.08;margin:13px 0}h2{font-size:clamp(1.25rem,3vw,1.7rem);margin:0 0 12px}p{color:#475569;margin:8px 0 14px}
+button{font:inherit;font-weight:850;border:0;border-radius:16px;min-height:60px;padding:14px 18px;cursor:pointer;touch-action:manipulation;transition:transform .08s ease}button:active{transform:scale(.985)}button:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
+.primary{background:var(--blue);color:#fff}.secondary{background:#e2e8f0;color:#172554}.teamA{background:#1d4ed8;color:#fff}.teamB{background:#0f766e;color:#fff}.imperative{background:#1d4ed8;color:#fff;font-size:clamp(1.15rem,2.4vw,1.7rem);min-height:112px}.persuasive{background:#0f766e;color:#fff;font-size:clamp(1.15rem,2.4vw,1.7rem);min-height:112px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.actions button{flex:1 1 150px}.modegrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.modecard{border:2px solid var(--line);border-radius:17px;padding:16px}.modecard button{width:100%;margin-top:8px}
+.hidden{display:none!important}.gamehead{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.pill{display:inline-block;padding:7px 12px;border-radius:999px;background:#e2e8f0;font-weight:800;font-size:.95rem}.timerbar{height:15px;background:#e2e8f0;border-radius:999px;overflow:hidden;margin:12px 0}.timerfill{height:100%;width:100%;background:#0f766e;transition:width .1s linear}.timerfill.low{background:#dc2626}.timer-number{font-size:clamp(2.4rem,6vw,4rem);font-weight:900;line-height:1;color:#1d4ed8;font-variant-numeric:tabular-nums}
+.question{min-height:200px;display:flex;align-items:center;justify-content:center;text-align:center;padding:clamp(18px,4vw,42px);background:#eff6ff;border:3px solid #bfdbfe;border-radius:22px;font-size:clamp(1.5rem,4vw,2.6rem);font-weight:850;line-height:1.22;margin:16px 0}.answers{display:grid;grid-template-columns:1fr 1fr;gap:14px}.feedback{min-height:64px;border-radius:14px;padding:14px 16px;font-weight:800;margin-top:14px;background:#fef3c7;color:#854d0e}.feedback.good{background:var(--green);color:#166534}.feedback.bad{background:var(--red);color:#991b1b}
+.scoreboard{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}.scorecard{border:3px solid var(--line);border-radius:18px;padding:14px;text-align:center}.scorecard.a{border-color:#93c5fd;background:#eff6ff}.scorecard.b{border-color:#5eead4;background:#f0fdfa}.teamname{font-weight:850;font-size:1.1rem}.score{font-size:clamp(2.3rem,5vw,3.5rem);font-weight:900;line-height:1.15;font-variant-numeric:tabular-nums}.score-controls{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.score-controls button{min-height:44px;padding:8px 14px}
+.summaryrow{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #e2e8f0}.summaryrow:last-child{border-bottom:0}.winner{padding:18px;border-radius:16px;background:#fef3c7;color:#854d0e;font-size:1.3rem;font-weight:900;text-align:center}
+.small{font-size:.9rem;color:#64748b}.footer{text-align:center;color:#64748b;font-size:.9rem;padding:10px}
+@media(max-width:650px){main{padding:8px}.panel{border-radius:16px}.modegrid,.answers{grid-template-columns:1fr}.question{min-height:160px}.imperative,.persuasive{min-height:85px}.scoreboard{gap:8px}.scorecard{padding:10px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<section class="hero">
+<span class="tag">BAHASA INDONESIA • KELAS VIII</span>
+<h1>⚡ Adu Cepat Kalimat Iklan</h1>
+<p>Tebak 10 kalimat iklan! Tentukan apakah kalimat itu <b>Perintah (Imperatif)</b> atau <b>Bujukan (Persuasif)</b>. Setiap soal hanya 10 detik.</p>
+<p style="margin-bottom:0">Dirancang untuk dimainkan bersama di Papan Interaktif Digital (PID).</p>
+</section>
+
+<section class="panel" id="setup">
+<h2>Pilih mode permainan</h2>
+<div class="modegrid">
+<div class="modecard"><span class="tag">MODE 1</span><h3>Main bersama</h3><p>Semua murid menjawab bergiliran. Setiap jawaban benar mendapat 1 poin.</p><button class="primary" id="soloBtn">Mulai main bersama</button></div>
+<div class="modecard"><span class="tag">MODE 2</span><h3>Dua tim</h3><p>Tim A dan Tim B bergiliran menjawab. Jawaban benar mendapat 1 poin untuk tim yang sedang bermain.</p><button class="teal" id="teamsBtn">Mulai mode 2 tim</button></div>
+</div>
+<div class="actions"><button class="secondary" id="fullBtn">⛶ Layar penuh</button></div>
+</section>
+
+<section class="panel hidden" id="game">
+<div class="gamehead">
+<span class="pill" id="modePill">Main bersama</span><span class="pill" id="roundPill">Soal 1 dari 10</span>
+</div>
+<div class="scoreboard hidden" id="scoreboard">
+<div class="scorecard a"><div class="teamname" id="nameA">Tim A</div><div class="score" id="scoreA">0</div><div class="score-controls"><button class="teamA" id="aMinus" aria-label="Kurangi skor Tim A">−</button><button class="teamA" id="aPlus" aria-label="Tambah skor Tim A">+</button></div></div>
+<div class="scorecard b"><div class="teamname" id="nameB">Tim B</div><div class="score" id="scoreB">0</div><div class="score-controls"><button class="teamB" id="bMinus" aria-label="Kurangi skor Tim B">−</button><button class="teamB" id="bPlus" aria-label="Tambah skor Tim B">+</button></div></div>
+</div>
+<div class="gamehead" style="margin-top:14px"><span class="pill" id="turnPill">Giliran semua murid</span><div style="display:flex;gap:10px;align-items:center"><span class="timer-number" id="timerNum">10</span><span style="font-weight:800">detik</span></div></div>
+<div class="timerbar"><div class="timerfill" id="timerFill"></div></div>
+<div class="question" id="sentence">Kalimat iklan akan muncul di sini.</div>
+<div class="answers">
+<button class="imperative" id="imperativeBtn">📣 Perintah<br>(Imperatif)</button>
+<button class="persuasive" id="persuasiveBtn">💡 Bujukan<br>(Persuasif)</button>
+</div>
+<div class="feedback" id="feedback" aria-live="polite">Baca kalimat, lalu pilih jawaban sebelum waktu habis.</div>
+<div class="actions"><button class="secondary" id="nextBtn" disabled>Soal berikutnya →</button><button class="secondary" id="quitBtn">Akhiri permainan</button></div>
+<p class="small">Catatan: tombol +/− pada papan skor dapat digunakan guru untuk menyesuaikan skor jika diperlukan.</p>
+</section>
+
+<section class="panel hidden" id="result">
+<span class="tag">PERMAINAN SELESAI</span><h2>Hasil Adu Cepat</h2>
+<div id="winner" class="winner"></div>
+<div class="scoreboard" id="finalBoard">
+<div class="scorecard a"><div class="teamname">Tim A</div><div class="score" id="finalA">0</div></div>
+<div class="scorecard b"><div class="teamname">Tim B</div><div class="score" id="finalB">0</div></div>
+</div>
+<div class="summaryrow"><span>Jawaban benar</span><b id="correctCount">0 dari 10</b></div>
+<div class="summaryrow"><span>Jawaban salah / waktu habis</span><b id="missCount">0</b></div>
+<h3>Ulasan jawaban</h3><div id="review"></div>
+<div class="actions"><button class="primary" id="playAgain">↻ Main lagi</button><button class="secondary" id="homeBtn">Kembali ke menu</button><button class="secondary" id="fullBtn2">⛶ Layar penuh</button></div>
+</section>
+<div class="footer">Ayo berlatih mengenali kalimat iklan dengan cepat, tepat, dan santun!</div>
+</main>
+<script>
+const questions=[
+{text:'Jangan buang sampah sembarangan!',kind:'imperatif',why:'Kata “jangan” menandai larangan.'},
+{text:'Madu hutan ini cocok menjadi pelengkap sarapan karena rasanya khas.',kind:'persuasif',why:'Kalimat membujuk dengan menyebutkan alasan atau keunggulan.'},
+{text:'Ayo pilih ikan olahan lokal untuk menu keluargamu!',kind:'imperatif',why:'Kata “ayo” menyatakan ajakan.'},
+{text:'Anyaman lokal dapat mempercantik sudut rumah dengan sentuhan alami.',kind:'persuasif',why:'Kalimat menawarkan manfaat untuk meyakinkan pembeli.'},
+{text:'Cobalah bubuk kakao lokal untuk minuman hangatmu!',kind:'imperatif',why:'Kata “cobalah” mengajak pembaca mencoba.'},
+{text:'Keripik pisang praktis dibawa saat bepergian karena kemasannya ringan.',kind:'persuasif',why:'Kalimat memberi alasan dan manfaat produk.'},
+{text:'Gunakan tas anyaman ini saat berbelanja!',kind:'imperatif',why:'Kata “gunakan” merupakan perintah.'},
+{text:'Abon ikan membantu menambah pilihan lauk yang praktis.',kind:'persuasif',why:'Kalimat membujuk dengan manfaat yang dinyatakan.'},
+{text:'Mari dukung produk buatan warga Kolaka Utara!',kind:'imperatif',why:'Kata “mari” menandai ajakan.'},
+{text:'Pilih madu hutan sebagai buah tangan yang sederhana dan berkesan.',kind:'imperatif',why:'Kata “pilih” mengarahkan pembaca melakukan tindakan, sehingga termasuk imperatif.'}
+];
+let order=[],index=0,mode='solo',activeTeam=0,teamScores=[0,0],correct=0,missed=0,history=[],answered=false,timer=null,deadline=0,remaining=10;
+const $=id=>document.getElementById(id);
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function show(id){$(id).classList.remove('hidden')}function hide(id){$(id).classList.add('hidden')}
+function clearTimer(){if(timer){clearInterval(timer);timer=null}}
+function setScores(){ $('scoreA').textContent=teamScores[0];$('scoreB').textContent=teamScores[1];$('finalA').textContent=teamScores[0];$('finalB').textContent=teamScores[1] }
+function start(which){
+ clearTimer();mode=which;order=shuffle(questions);index=0;teamScores=[0,0];activeTeam=0;correct=0;missed=0;history=[];answered=false;
+ hide('setup');hide('result');show('game');$('scoreboard').classList.toggle('hidden',mode!=='teams');$('modePill').textContent=mode==='teams'?'Mode 2 Tim':'Mode Main Bersama';
+ $('nextBtn').disabled=true;$('nextBtn').textContent='Soal berikutnya →';setScores();renderQuestion();
+}
+function renderQuestion(){
+ clearTimer();answered=false;remaining=10;const q=order[index];
+ $('roundPill').textContent=`Soal ${index+1} dari ${order.length}`;$('sentence').textContent=q.text;
+ $('feedback').className='feedback';$('feedback').textContent='Baca kalimat, lalu pilih jawaban sebelum waktu habis.';
+ $('nextBtn').disabled=true;$('imperativeBtn').disabled=false;$('persuasiveBtn').disabled=false;
+ $('turnPill').textContent=mode==='teams'?`Giliran: Tim ${activeTeam===0?'A':'B'}`:'Giliran semua murid';
+ $('timerNum').textContent='10';$('timerFill').style.width='100%';$('timerFill').classList.remove('low');
+ deadline=Date.now()+10000;
+ timer=setInterval(tick,100);tick();
+}
+function tick(){if(answered)return;remaining=Math.max(0,(deadline-Date.now())/1000);$('timerNum').textContent=Math.ceil(remaining);$('timerFill').style.width=(remaining/10*100)+'%';$('timerFill').classList.toggle('low',remaining<=3);if(remaining<=0){resolve(null)}}
+function resolve(choice){
+ if(answered)return;answered=true;clearTimer();const q=order[index],isCorrect=choice===q.kind;
+ $('imperativeBtn').disabled=true;$('persuasiveBtn').disabled=true;$('nextBtn').disabled=false;
+ if(isCorrect){correct++;if(mode==='teams')teamScores[activeTeam]++;$('feedback').className='feedback good';$('feedback').textContent='✓ Tepat! '+q.why}
+ else{missed++;$('feedback').className='feedback bad';$('feedback').textContent=(choice===null?'⌛ Waktu habis. ':'✗ Belum tepat. ')+`Jawaban: ${q.kind==='imperatif'?'Perintah (Imperatif)':'Bujukan (Persuasif)'}. ${q.why}`}
+ history.push({text:q.text,kind:q.kind,choice,correct:isCorrect,why:q.why});setScores();
+ $('nextBtn').textContent=index===order.length-1?'Lihat hasil →':'Soal berikutnya →';
+ if(mode==='teams')activeTeam=1-activeTeam;
+}
+function next(){if(!answered)return;if(index>=order.length-1){finish();return}index++;renderQuestion()}
+function finish(){
+ clearTimer();hide('game');show('result');$('correctCount').textContent=`${correct} dari 10`;$('missCount').textContent=missed;
+ setScores();
+ if(mode==='teams'){
+  $('finalBoard').classList.remove('hidden');
+  $('winner').textContent=teamScores[0]===teamScores[1]?`Seri! Kedua tim mendapat ${teamScores[0]} poin.`:`🏆 Tim ${teamScores[0]>teamScores[1]?'A':'B'} menang dengan ${Math.max(...teamScores)} poin!`;
+  $('finalBoard').querySelector('.a .teamname').textContent='Tim A';$('finalBoard').querySelector('.b .teamname').textContent='Tim B';
+ }else{$('finalBoard').classList.add('hidden');$('winner').textContent=`Skor kamu: ${correct}/10. ${correct>=8?'Hebat!':correct>=5?'Bagus, terus berlatih!':'Ayo pelajari kembali ciri kedua jenis kalimat.'}`}
+ $('review').innerHTML='';history.forEach((h,i)=>{const row=document.createElement('div');row.className='summaryrow';const left=document.createElement('span');left.textContent=`${i+1}. ${h.text}`;const right=document.createElement('b');right.textContent=(h.correct?'✓ ':'• ')+(h.kind==='imperatif'?'Imperatif':'Persuasif');right.style.color=h.correct?'#166534':'#1e40af';row.append(left,right);const why=document.createElement('p');why.className='small';why.style.flexBasis='100%';why.textContent=h.why;const wrap=document.createElement('div');wrap.style.padding='10px 0';wrap.append(row,why);$('review').appendChild(wrap)});
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function goHome(){clearTimer();hide('game');hide('result');show('setup')}
+function fullscreen(){if(!document.fullscreenElement){document.documentElement.requestFullscreen?.().catch(()=>{})}else{document.exitFullscreen?.()}}
+$('soloBtn').addEventListener('click',()=>start('solo'));$('teamsBtn').addEventListener('click',()=>start('teams'));
+$('imperativeBtn').addEventListener('click',()=>resolve('imperatif'));$('persuasiveBtn').addEventListener('click',()=>resolve('persuasif'));
+$('nextBtn').addEventListener('click',next);$('quitBtn').addEventListener('click',()=>{if(confirm('Akhiri permainan dan lihat hasil sementara?'))finish()});
+$('playAgain').addEventListener('click',()=>start(mode));$('homeBtn').addEventListener('click',goHome);$('fullBtn').addEventListener('click',fullscreen);$('fullBtn2').addEventListener('click',fullscreen);
+$('aPlus').addEventListener('click',()=>{teamScores[0]++;setScores()});$('aMinus').addEventListener('click',()=>{teamScores[0]=Math.max(0,teamScores[0]-1);setScores()});$('bPlus').addEventListener('click',()=>{teamScores[1]++;setScores()});$('bMinus').addEventListener('click',()=>{teamScores[1]=Math.max(0,teamScores[1]-1);setScores()});
+</script>
+</body>
+</html>

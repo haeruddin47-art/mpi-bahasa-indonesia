@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latihan Formatif 1 — Imperatif atau Persuasif?</title>
+<style>
+:root{--ink:#172554;--muted:#475569;--paper:#f8fafc;--blue:#1d4ed8;--teal:#0f766e;--gold:#fef3c7;--green:#dcfce7;--red:#fee2e2;--line:#cbd5e1}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#e0f2fe,#f8fafc 48%,#ccfbf1);color:var(--ink);font-family:Arial,Helvetica,sans-serif;font-size:18px;line-height:1.45}
+main{max-width:1100px;margin:auto;padding:18px}.panel{background:#fff;border:2px solid #dbeafe;border-radius:22px;padding:clamp(16px,3vw,28px);box-shadow:0 8px 24px #0f172a12;margin:14px 0}
+header{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}.tag{display:inline-block;background:#dbeafe;color:#1e3a8a;border-radius:999px;padding:6px 12px;font-size:.9rem;font-weight:700}
+h1{font-size:clamp(1.65rem,4vw,2.5rem);line-height:1.12;margin:12px 0}h2{font-size:clamp(1.3rem,3vw,1.8rem);margin:0 0 12px}p{margin:8px 0 14px;color:var(--muted)}
+button{font:inherit;font-weight:700;border:0;border-radius:14px;padding:13px 18px;min-height:52px;cursor:pointer;touch-action:manipulation}
+button:focus-visible,.tile:focus-visible,.dropzone:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
+.primary{background:var(--blue);color:white}.secondary{background:#e2e8f0;color:#172554}.teal{background:var(--teal);color:white}.small{min-height:42px;padding:9px 13px;font-size:.95rem}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.status{padding:12px 15px;border-radius:12px;background:#eff6ff;color:#1e3a8a;font-weight:700;margin:12px 0}
+.gamegrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.bank{background:#f1f5f9;border:2px dashed #94a3b8;border-radius:18px;padding:14px;min-height:150px}
+.bank h3{margin:0 0 10px;font-size:1.12rem}.tiles{display:flex;flex-wrap:wrap;gap:10px}.tile{background:white;color:#172554;border:2px solid #93c5fd;border-radius:14px;padding:12px 14px;min-height:58px;cursor:grab;font-weight:700;box-shadow:0 3px 0 #bfdbfe;touch-action:manipulation}.tile:active{cursor:grabbing}.tile.selected{outline:4px solid #f59e0b;border-color:#b45309}.tile.correct{background:var(--green);border-color:#16a34a;box-shadow:0 3px 0 #86efac}.tile.wrong{background:var(--red);border-color:#dc2626;box-shadow:0 3px 0 #fca5a5}.dropzone{border:3px dashed #60a5fa;background:#eff6ff;border-radius:18px;padding:14px;min-height:200px}.dropzone.persuasi{background:#f0fdfa;border-color:#5eead4}.dropzone h3{margin:0 0 6px}.dropzone p{font-size:.95rem;margin:0 0 12px}.dropzone.over{outline:4px solid #f59e0b}.dropzone .tiles{min-height:90px;align-content:flex-start}.feedback{font-weight:700;border-radius:12px;padding:10px 12px;margin-top:12px}.good{background:var(--green);color:#166534}.bad{background:var(--red);color:#991b1b}.neutral{background:#fef3c7;color:#854d0e}.hidden{display:none!important}.score{font-size:clamp(2.5rem,8vw,4.5rem);font-weight:800;color:var(--blue);line-height:1}.resultcard{border-radius:18px;background:#eff6ff;padding:20px;margin:14px 0}.answerbox{border:2px solid var(--line);border-radius:14px;padding:14px;margin:12px 0;background:#fff}.answerbox label{font-weight:700;display:block;margin-bottom:8px}.answerbox textarea{width:100%;font:inherit;padding:12px;border:2px solid #94a3b8;border-radius:10px;min-height:76px;resize:vertical;color:var(--ink)}.hint{font-size:.93rem;color:#64748b}.footer{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;color:#64748b;font-size:.9rem;margin:18px 4px}
+@media(max-width:720px){main{padding:10px}.gamegrid{grid-template-columns:1fr}.dropzone{min-height:150px}.panel{border-radius:17px}.tile{width:100%;text-align:left}.tiles .tile{width:auto;max-width:100%}.bank .tile{width:100%}header{align-items:flex-start}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<section class="panel" id="intro">
+<header><span class="tag">BAHASA INDONESIA • KELAS VIII</span><span class="tag">FORMATIF 1</span></header>
+<h1>Seret atau Ketuk: Imperatif atau Persuasif?</h1>
+<p>Kelompokkan 6 slogan iklan ke kolom yang tepat. Kamu dapat <b>menyeret slogan</b> ke kolom, atau <b>mengetuk slogan lalu mengetuk kolom tujuan</b>.</p>
+<div class="status">Ingat: Imperatif berisi perintah, larangan, ajakan, atau permintaan. Persuasif membujuk pembaca dengan manfaat atau alasan.</div>
+<p><b>Petunjuk:</b> Pilih satu slogan, tentukan jenis kalimatnya, lalu baca umpan balik yang muncul. Setiap slogan dinilai satu kali.</p>
+<div class="actions"><button class="primary" id="startBtn">Mulai latihan</button><button class="secondary" id="fullBtn">⛶ Layar penuh</button></div>
+</section>
+
+<section class="panel hidden" id="activity">
+<header><span class="tag">6 SLOGAN</span><span class="tag" id="progress">Sudah dinilai: 0/6</span></header>
+<h2>Tempatkan setiap slogan</h2>
+<p>Ketuk slogan untuk memilihnya, kemudian ketuk kolom <b>Imperatif</b> atau <b>Persuasif</b>. Kamu juga boleh menggunakan fitur seret dan letakkan.</p>
+<div class="bank" id="sourceBank"><h3>Slogan yang belum dikelompokkan</h3><div class="tiles" id="sourceTiles"></div></div>
+<div class="gamegrid" style="margin-top:16px">
+<div class="dropzone" id="imperativeZone" data-kind="imperatif" tabindex="0" role="button" aria-label="Kolom Imperatif">
+<h3>📣 Imperatif</h3><p>Perintah, larangan, ajakan, atau permintaan.</p><div class="tiles" id="imperativeTiles"></div>
+</div>
+<div class="dropzone persuasi" id="persuasiveZone" data-kind="persuasif" tabindex="0" role="button" aria-label="Kolom Persuasif">
+<h3>💡 Persuasif</h3><p>Bujukan yang menonjolkan manfaat atau alasan.</p><div class="tiles" id="persuasiveTiles"></div>
+</div>
+</div>
+<div id="feedback" class="feedback neutral" role="status" aria-live="polite">Pilih sebuah slogan untuk memulai.</div>
+<div class="actions"><button class="secondary" id="resetBtn">↻ Ulangi latihan</button><button class="primary hidden" id="finishBtn">Lihat hasil formatif 1</button></div>
+</section>
+
+<section class="panel hidden" id="results">
+<header><span class="tag">HASIL FORMATIF 1</span><span class="tag">Bahasa Indonesia</span></header>
+<h2>Hasil latihanmu</h2>
+<div class="resultcard"><div class="score" id="scoreNumber">0/6</div><h3 id="scoreLabel">Skor 1</h3><p id="scoreMessage"></p></div>
+<div id="review"></div>
+<h2 style="margin-top:22px">Tantangan singkat: sebutkan satu ciri kebahasaan</h2>
+<p>Lengkapi kedua kalimat berikut. Jawabanmu bisa disalin untuk disampaikan kepada guru atau kelompok.</p>
+<div class="answerbox"><label for="imperativeFeature">Ciri kalimat imperatif:</label><textarea id="imperativeFeature" placeholder="Contoh: menggunakan kata larangan “jangan” atau kata ajakan “ayo”."></textarea><button class="secondary small" data-copy="imperativeFeature">Salin jawaban imperatif</button></div>
+<div class="answerbox"><label for="persuasiveFeature">Ciri kalimat persuasif:</label><textarea id="persuasiveFeature" placeholder="Contoh: berisi bujukan dan menyebutkan manfaat produk."></textarea><button class="secondary small" data-copy="persuasiveFeature">Salin jawaban persuasif</button></div>
+<div class="actions"><button class="primary" id="copyBothBtn">Salin kedua jawaban</button><button class="teal" id="restartBtn">↻ Coba lagi</button><button class="secondary" id="fullBtn2">⛶ Layar penuh</button></div>
+<div class="status" id="copyStatus" aria-live="polite">Isi kedua jawaban, lalu salin jika sudah siap.</div>
+</section>
+<div class="footer"><span>Belajar jujur, berbahasa santun, dan beriklan tanpa berlebihan.</span><span>SMP Negeri 8 Kolaka Utara</span></div>
+</main>
+<script>
+const slogans=[
+ {id:1,text:"Jangan buang sampah sembarangan!",kind:"imperatif",why:"Kata “jangan” menandai larangan, jadi termasuk kalimat imperatif."},
+ {id:2,text:"Ayo bawa botol minum sendiri!",kind:"imperatif",why:"Kata “ayo” menyatakan ajakan, salah satu bentuk imperatif."},
+ {id:3,text:"Pilih Buku Ceria, temukan ide setiap hari.",kind:"persuasif",why:"Slogan membujuk pembaca memilih produk dengan menonjolkan manfaatnya."},
+ {id:4,text:"Minum Segar Rimba, tubuh terasa lebih bugar.",kind:"persuasif",why:"Slogan menawarkan manfaat untuk meyakinkan pembaca."},
+ {id:5,text:"Cobalah pensil warna Pelangi untuk gambar yang makin cerah.",kind:"imperatif",why:"Kata “cobalah” merupakan perintah atau ajakan mencoba, sehingga diklasifikasikan sebagai imperatif."},
+ {id:6,text:"Sabun Daun Wangi membantu tangan terasa bersih setelah beraktivitas.",kind:"persuasif",why:"Slogan memberi alasan/manfaat produk untuk membujuk pembaca."}
+];
+const $=id=>document.getElementById(id);
+let answers={},selectedId=null,started=false;
+function makeTile(item){
+ const b=document.createElement('button');b.type='button';b.className='tile';b.textContent=item.text;b.draggable=true;b.dataset.id=item.id;b.setAttribute('aria-label',item.text);
+ if(answers[item.id]){b.classList.add(answers[item.id]===item.kind?'correct':'wrong');b.disabled=true;b.draggable=false}
+ if(selectedId===item.id)b.classList.add('selected');
+ b.addEventListener('click',()=>{if(answers[item.id])return;selectedId=item.id;renderTiles();$('feedback').className='feedback neutral';$('feedback').textContent='Slogan dipilih. Sekarang ketuk kolom Imperatif atau Persuasif.'});
+ b.addEventListener('dragstart',e=>{if(answers[item.id]){e.preventDefault();return}e.dataTransfer.setData('text/plain',String(item.id));selectedId=item.id});
+ return b;
+}
+function renderTiles(){
+ $('sourceTiles').innerHTML='';$('imperativeTiles').innerHTML='';$('persuasiveTiles').innerHTML='';
+ slogans.forEach(item=>{if(answers[item.id]){const dest=answers[item.id]==='imperatif'?'imperativeTiles':'persuasiveTiles';$(dest).appendChild(makeTile(item))}else{$('sourceTiles').appendChild(makeTile(item))}});
+ $('progress').textContent=`Sudah dinilai: ${Object.keys(answers).length}/6`;
+ $('finishBtn').classList.toggle('hidden',Object.keys(answers).length!==6);
+}
+function place(id,kind){
+ const item=slogans.find(s=>s.id===Number(id));if(!item||answers[item.id])return;
+ answers[item.id]=kind;selectedId=null;renderTiles();
+ const correct=item.kind===kind;
+ $('feedback').className='feedback '+(correct?'good':'bad');
+ $('feedback').textContent=(correct?'Tepat! ':'Belum tepat. ')+item.why;
+ if(Object.keys(answers).length===6){$('feedback').textContent+=' Semua slogan sudah dinilai. Pilih “Lihat hasil formatif 1”.'}
+}
+function zoneSetup(id,kind){
+ const z=$(id);z.addEventListener('dragover',e=>{e.preventDefault();z.classList.add('over')});
+ z.addEventListener('dragleave',()=>z.classList.remove('over'));
+ z.addEventListener('drop',e=>{e.preventDefault();z.classList.remove('over');place(e.dataTransfer.getData('text/plain'),kind)});
+ z.addEventListener('click',e=>{if(e.target.closest('.tile'))return;if(selectedId!==null)place(selectedId,kind);else{$('feedback').className='feedback neutral';$('feedback').textContent='Pilih slogan yang belum dinilai terlebih dahulu.'}});
+ z.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&selectedId!==null){e.preventDefault();place(selectedId,kind)}});
+}
+function reset(){answers={};selectedId=null;started=true;$('intro').classList.add('hidden');$('results').classList.add('hidden');$('activity').classList.remove('hidden');$('feedback').className='feedback neutral';$('feedback').textContent='Pilih sebuah slogan, lalu tentukan kolomnya.';renderTiles();window.scrollTo({top:0,behavior:'smooth'})}
+function showResults(){
+ $('activity').classList.add('hidden');$('results').classList.remove('hidden');
+ const count=slogans.filter(s=>answers[s.id]===s.kind).length;
+ const score=count>=5?3:count>=3?2:1;
+ $('scoreNumber').textContent=`${count}/6`;$('scoreLabel').textContent=`Skor ${score}${score===1?' — perlu bimbingan':''}`;
+ $('scoreMessage').textContent=score===3?'Hebat! Kamu tepat mengelompokkan hampir semua slogan.':score===2?'Cukup baik. Pelajari kembali kata perintah, larangan, ajakan, dan manfaat dalam iklan.':'Perlu bimbingan. Ayo pelajari kembali perbedaan imperatif dan persuasif bersama guru atau kelompok.';
+ $('review').innerHTML='<h3>Ulasan setiap slogan</h3>';
+ slogans.forEach(s=>{const ok=answers[s.id]===s.kind;const d=document.createElement('div');d.className='answerbox';const h=document.createElement('strong');h.textContent=(ok?'✓ Tepat — ':'✗ Perlu diperbaiki — ')+s.text;const p=document.createElement('p');p.textContent=`Jenis yang tepat: ${s.kind==='imperatif'?'Imperatif':'Persuasif'}. ${s.why}`;d.append(h,p);$('review').appendChild(d)});
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+async function copyText(text){try{await navigator.clipboard.writeText(text);$('copyStatus').textContent='Jawaban berhasil disalin. Tempelkan pada tempat yang kamu perlukan.'}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();$('copyStatus').textContent=ok?'Jawaban berhasil disalin.':'Penyalinan otomatis tidak tersedia. Pilih dan salin teks secara manual.'}}
+function fullscreen(){if(!document.fullscreenElement){document.documentElement.requestFullscreen?.().catch(()=>{})}else{document.exitFullscreen?.()}}
+$('startBtn').addEventListener('click',reset);$('resetBtn').addEventListener('click',reset);$('restartBtn').addEventListener('click',reset);$('finishBtn').addEventListener('click',showResults);
+$('fullBtn').addEventListener('click',fullscreen);$('fullBtn2').addEventListener('click',fullscreen);
+zoneSetup('imperativeZone','imperatif');zoneSetup('persuasiveZone','persuasif');
+document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.copy;const label=id==='imperativeFeature'?'Ciri kalimat imperatif: ':'Ciri kalimat persuasif: ';const v=$(id).value.trim();if(!v){$('copyStatus').textContent='Isi jawaban terlebih dahulu, kemudian tekan tombol salin.';return}copyText(label+v)}));
+$('copyBothBtn').addEventListener('click',()=>{const a=$('imperativeFeature').value.trim(),b=$('persuasiveFeature').value.trim();if(!a||!b){$('copyStatus').textContent='Lengkapi kedua jawaban terlebih dahulu.';return}copyText('Ciri kalimat imperatif: '+a+'\nCiri kalimat persuasif: '+b)});
+</script>
+</body>
+</html>
